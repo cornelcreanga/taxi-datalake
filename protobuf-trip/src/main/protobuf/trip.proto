@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package com.creanga.datalake.protobuftrip;
+
+message TripStart {
+    string trip_id = 1;
+    string user_id = 2;
+    string driver_id = 3;
+    string latitude = 4;
+    string longitude = 5;
+    int64 order_timestamp = 6;
+    int64 start_timestamp = 7;
+
+    enum PaymentType {
+        CASH = 0;
+        CARD = 1;
+    }
+
+    PaymentType payment_type = 8;
+}
+
+message TripEnd {
+    string trip_id = 1;
+    string latitude = 2;
+    string longitude = 3;
+    int64 timestamp = 4;
+}
+
+message TripStop {
+    string trip_id = 1;
+    string latitude = 2;
+    string longitude = 3;
+    int64 stop_timestamp = 4;
+    int64 start_timestamp = 5;
+}
+
+message TripPing {
+    string trip_id = 1;
+    string latitude = 2;
+    string longitude = 3;
+    int64 timestamp = 4;
+}

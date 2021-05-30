@@ -1,0 +1,62 @@
+version: '3'
+
+
+services:
+
+  zookeeper:
+    image: 'bitnami/zookeeper:latest'
+    hostname: zookeeper
+    networks:
+      apptier:
+        ipv4_address: 10.13.0.7
+    ports:
+      - "2181:2181"
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+
+  kafka:
+    hostname: kafka
+    image: 'bitnami/kafka:latest'
+    ports:
+      - '9093:9093'
+    networks:
+      apptier:
+        ipv4_address: 10.13.0.8
+    depends_on:
+      - zookeeper
+    environment:
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+      - ALLOW_PLAINTEXT_LISTENER=yes
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CLIENT:PLAINTEXT,EXTERNAL:PLAINTEXT
+      - KAFKA_CFG_LISTENERS=CLIENT://:9092,EXTERNAL://:9093
+      - KAFKA_CFG_ADVERTISED_LISTENERS=CLIENT://kafka:9092,EXTERNAL://localhost:9093
+      - KAFKA_INTER_BROKER_LISTENER_NAME=CLIENT
+
+  streaming:
+    container_name: streaming
+    image: streaming:latest
+    build: ../../ingestion-streaming
+    environment:
+      - ENV=local
+      - INSTANCE_ID=1
+      - LOCAL_STORAGE=/localfiles
+      - REDIS_HOST=redis:6379
+    ports:
+      - "8088:8088"
+      - "10010:10010"
+    expose:
+      - "8088"
+      - "10010"
+    networks:
+      apptier:
+        ipv4_address: 10.13.0.9
+    depends_on:
+      - kafka
+
+networks:
+  apptier:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.13.0.0/16
+          gateway: 10.13.0.1
