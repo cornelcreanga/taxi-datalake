@@ -8,6 +8,11 @@ import java.util.UUID;
 
 public class TripGenerator implements Runnable{
 
+  public static final double northLatitude = 44.481230877283856d;
+  public static final double southLatitude = 44.38316703371887;
+  public static final double westLongitude = 26.1745387998047d;
+  public static final double eastLongitude = 26.031888195556654d;
+
   private final Producer<byte[],byte[]> kafkaProducer;
   public final String topic;
   public final int trips;
@@ -25,7 +30,6 @@ public class TripGenerator implements Runnable{
     for (int i = 0; i < trips; i++) {
       Trip.TripStart tripStart = tripStart();
       kafkaProducer.send(new ProducerRecord<>(topic, tripStart.toByteArray()));
-
       kafkaProducer.flush();
     }
 
@@ -36,10 +40,12 @@ public class TripGenerator implements Runnable{
         setTripId(UUID.randomUUID().toString()).
         setDriverId("").
         setUserId("").
-        setLatitude("").
-        setLongitude("").
+        setStartLatitude(0).
+        setStartLongitude(0).
+        setEndLatitude(0).
+        setEndLongitude(0).
         setOrderTimestamp(System.currentTimeMillis()).
-        setStartTimestamp(System.currentTimeMillis()).
+        setTripTimestamp(System.currentTimeMillis()).
         setPaymentType(Trip.TripStart.PaymentType.CARD).
         build();
   }

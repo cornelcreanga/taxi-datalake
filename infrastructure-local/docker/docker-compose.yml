@@ -3,12 +3,32 @@ version: '3'
 
 services:
 
+  neo4j:
+    image: 'neo4j:latest'
+    hostname: neo4j
+    container_name: neo4j
+    networks:
+      - apptier
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+#    depends_on:
+#      - kafka
+    volumes:
+      - ./neo4j/plugins:/plugins
+    environment:
+      NEO4J_AUTH: neo4j/streams
+      NEO4J_dbms_logs_debug_level: DEBUG
+      # KAFKA related configuration
+#      NEO4J_kafka_bootstrap_servers: kafka:19092
+#      NEO4J_streams_source_topic_nodes_neo4j: Person{*}
+#      NEO4J_streams_source_topic_relationships_neo4j: KNOWS{*}
+
   zookeeper:
     image: 'bitnami/zookeeper:latest'
     hostname: zookeeper
     networks:
-      apptier:
-        ipv4_address: 10.13.0.7
+      - apptier
     ports:
       - "2181:2181"
     environment:
@@ -20,8 +40,7 @@ services:
     ports:
       - '9093:9093'
     networks:
-      apptier:
-        ipv4_address: 10.13.0.8
+      - apptier
     depends_on:
       - zookeeper
     environment:
@@ -48,15 +67,11 @@ services:
       - "8088"
       - "10010"
     networks:
-      apptier:
-        ipv4_address: 10.13.0.9
+      - apptier
+
     depends_on:
       - kafka
 
 networks:
   apptier:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 10.13.0.0/16
-          gateway: 10.13.0.1
+

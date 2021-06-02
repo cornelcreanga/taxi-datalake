@@ -15,7 +15,7 @@ public final class Trip {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   public interface TripStartOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.creanga.datalake.protobuftrip.TripStart)
+      // @@protoc_insertion_point(interface_extends:com.creanga.taxidatalake.protobuftrip.TripStart)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -49,50 +49,50 @@ public final class Trip {
         getDriverIdBytes();
 
     /**
-     * <code>optional string latitude = 4;</code>
+     * <code>optional double start_latitude = 4;</code>
      */
-    java.lang.String getLatitude();
-    /**
-     * <code>optional string latitude = 4;</code>
-     */
-    com.google.protobuf.ByteString
-        getLatitudeBytes();
+    double getStartLatitude();
 
     /**
-     * <code>optional string longitude = 5;</code>
+     * <code>optional double start_longitude = 5;</code>
      */
-    java.lang.String getLongitude();
-    /**
-     * <code>optional string longitude = 5;</code>
-     */
-    com.google.protobuf.ByteString
-        getLongitudeBytes();
+    double getStartLongitude();
 
     /**
-     * <code>optional int64 order_timestamp = 6;</code>
+     * <code>optional double end_latitude = 6;</code>
+     */
+    double getEndLatitude();
+
+    /**
+     * <code>optional double end_longitude = 7;</code>
+     */
+    double getEndLongitude();
+
+    /**
+     * <code>optional int64 order_timestamp = 8;</code>
      */
     long getOrderTimestamp();
 
     /**
-     * <code>optional int64 start_timestamp = 7;</code>
+     * <code>optional int64 trip_timestamp = 9;</code>
      */
-    long getStartTimestamp();
+    long getTripTimestamp();
 
     /**
-     * <code>optional .com.creanga.datalake.protobuftrip.TripStart.PaymentType payment_type = 8;</code>
+     * <code>optional .com.creanga.taxidatalake.protobuftrip.TripStart.PaymentType payment_type = 10;</code>
      */
     int getPaymentTypeValue();
     /**
-     * <code>optional .com.creanga.datalake.protobuftrip.TripStart.PaymentType payment_type = 8;</code>
+     * <code>optional .com.creanga.taxidatalake.protobuftrip.TripStart.PaymentType payment_type = 10;</code>
      */
-    Trip.TripStart.PaymentType getPaymentType();
+    com.creanga.taxidatalake.protobuftrip.Trip.TripStart.PaymentType getPaymentType();
   }
   /**
-   * Protobuf type {@code com.creanga.datalake.protobuftrip.TripStart}
+   * Protobuf type {@code com.creanga.taxidatalake.protobuftrip.TripStart}
    */
   public  static final class TripStart extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:com.creanga.datalake.protobuftrip.TripStart)
+      // @@protoc_insertion_point(message_implements:com.creanga.taxidatalake.protobuftrip.TripStart)
       TripStartOrBuilder {
     // Use TripStart.newBuilder() to construct.
     private TripStart(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
@@ -102,10 +102,12 @@ public final class Trip {
       tripId_ = "";
       userId_ = "";
       driverId_ = "";
-      latitude_ = "";
-      longitude_ = "";
+      startLatitude_ = 0D;
+      startLongitude_ = 0D;
+      endLatitude_ = 0D;
+      endLongitude_ = 0D;
       orderTimestamp_ = 0L;
-      startTimestamp_ = 0L;
+      tripTimestamp_ = 0L;
       paymentType_ = 0;
     }
 
@@ -152,29 +154,37 @@ public final class Trip {
               driverId_ = s;
               break;
             }
-            case 34: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 33: {
 
-              latitude_ = s;
+              startLatitude_ = input.readDouble();
               break;
             }
-            case 42: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 41: {
 
-              longitude_ = s;
+              startLongitude_ = input.readDouble();
               break;
             }
-            case 48: {
+            case 49: {
+
+              endLatitude_ = input.readDouble();
+              break;
+            }
+            case 57: {
+
+              endLongitude_ = input.readDouble();
+              break;
+            }
+            case 64: {
 
               orderTimestamp_ = input.readInt64();
               break;
             }
-            case 56: {
+            case 72: {
 
-              startTimestamp_ = input.readInt64();
+              tripTimestamp_ = input.readInt64();
               break;
             }
-            case 64: {
+            case 80: {
               int rawValue = input.readEnum();
 
               paymentType_ = rawValue;
@@ -193,18 +203,18 @@ public final class Trip {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return Trip.internal_static_com_creanga_datalake_protobuftrip_TripStart_descriptor;
+      return com.creanga.taxidatalake.protobuftrip.Trip.internal_static_com_creanga_taxidatalake_protobuftrip_TripStart_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return Trip.internal_static_com_creanga_datalake_protobuftrip_TripStart_fieldAccessorTable
+      return com.creanga.taxidatalake.protobuftrip.Trip.internal_static_com_creanga_taxidatalake_protobuftrip_TripStart_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              Trip.TripStart.class, Trip.TripStart.Builder.class);
+              com.creanga.taxidatalake.protobuftrip.Trip.TripStart.class, com.creanga.taxidatalake.protobuftrip.Trip.TripStart.Builder.class);
     }
 
     /**
-     * Protobuf enum {@code com.creanga.datalake.protobuftrip.TripStart.PaymentType}
+     * Protobuf enum {@code com.creanga.taxidatalake.protobuftrip.TripStart.PaymentType}
      */
     public enum PaymentType
         implements com.google.protobuf.ProtocolMessageEnum {
@@ -275,7 +285,7 @@ public final class Trip {
       }
       public static final com.google.protobuf.Descriptors.EnumDescriptor
           getDescriptor() {
-        return Trip.TripStart.getDescriptor().getEnumTypes().get(0);
+        return com.creanga.taxidatalake.protobuftrip.Trip.TripStart.getDescriptor().getEnumTypes().get(0);
       }
 
       private static final PaymentType[] VALUES = values();
@@ -298,7 +308,7 @@ public final class Trip {
         this.value = value;
       }
 
-      // @@protoc_insertion_point(enum_scope:com.creanga.datalake.protobuftrip.TripStart.PaymentType)
+      // @@protoc_insertion_point(enum_scope:com.creanga.taxidatalake.protobuftrip.TripStart.PaymentType)
     }
 
     public static final int TRIP_ID_FIELD_NUMBER = 1;
@@ -403,106 +413,74 @@ public final class Trip {
       }
     }
 
-    public static final int LATITUDE_FIELD_NUMBER = 4;
-    private volatile java.lang.Object latitude_;
+    public static final int START_LATITUDE_FIELD_NUMBER = 4;
+    private double startLatitude_;
     /**
-     * <code>optional string latitude = 4;</code>
+     * <code>optional double start_latitude = 4;</code>
      */
-    public java.lang.String getLatitude() {
-      java.lang.Object ref = latitude_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        latitude_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>optional string latitude = 4;</code>
-     */
-    public com.google.protobuf.ByteString
-        getLatitudeBytes() {
-      java.lang.Object ref = latitude_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        latitude_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public double getStartLatitude() {
+      return startLatitude_;
     }
 
-    public static final int LONGITUDE_FIELD_NUMBER = 5;
-    private volatile java.lang.Object longitude_;
+    public static final int START_LONGITUDE_FIELD_NUMBER = 5;
+    private double startLongitude_;
     /**
-     * <code>optional string longitude = 5;</code>
+     * <code>optional double start_longitude = 5;</code>
      */
-    public java.lang.String getLongitude() {
-      java.lang.Object ref = longitude_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        longitude_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>optional string longitude = 5;</code>
-     */
-    public com.google.protobuf.ByteString
-        getLongitudeBytes() {
-      java.lang.Object ref = longitude_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        longitude_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public double getStartLongitude() {
+      return startLongitude_;
     }
 
-    public static final int ORDER_TIMESTAMP_FIELD_NUMBER = 6;
+    public static final int END_LATITUDE_FIELD_NUMBER = 6;
+    private double endLatitude_;
+    /**
+     * <code>optional double end_latitude = 6;</code>
+     */
+    public double getEndLatitude() {
+      return endLatitude_;
+    }
+
+    public static final int END_LONGITUDE_FIELD_NUMBER = 7;
+    private double endLongitude_;
+    /**
+     * <code>optional double end_longitude = 7;</code>
+     */
+    public double getEndLongitude() {
+      return endLongitude_;
+    }
+
+    public static final int ORDER_TIMESTAMP_FIELD_NUMBER = 8;
     private long orderTimestamp_;
     /**
-     * <code>optional int64 order_timestamp = 6;</code>
+     * <code>optional int64 order_timestamp = 8;</code>
      */
     public long getOrderTimestamp() {
       return orderTimestamp_;
     }
 
-    public static final int START_TIMESTAMP_FIELD_NUMBER = 7;
-    private long startTimestamp_;
+    public static final int TRIP_TIMESTAMP_FIELD_NUMBER = 9;
+    private long tripTimestamp_;
     /**
-     * <code>optional int64 start_timestamp = 7;</code>
+     * <code>optional int64 trip_timestamp = 9;</code>
      */
-    public long getStartTimestamp() {
-      return startTimestamp_;
+    public long getTripTimestamp() {
+      return tripTimestamp_;
     }
 
-    public static final int PAYMENT_TYPE_FIELD_NUMBER = 8;
+    public static final int PAYMENT_TYPE_FIELD_NUMBER = 10;
     private int paymentType_;
     /**
-     * <code>optional .com.creanga.datalake.protobuftrip.TripStart.PaymentType payment_type = 8;</code>
+     * <code>optional .com.creanga.taxidatalake.protobuftrip.TripStart.PaymentType payment_type = 10;</code>
      */
     public int getPaymentTypeValue() {
       return paymentType_;
     }
     /**
-     * <code>optional .com.creanga.datalake.protobuftrip.TripStart.PaymentType payment_type = 8;</code>
+     * <code>optional .com.creanga.taxidatalake.protobuftrip.TripStart.PaymentType payment_type = 10;</code>
      */
-    public Trip.TripStart.PaymentType getPaymentType() {
-      Trip.TripStart.PaymentType result = Trip.TripStart.PaymentType.valueOf(paymentType_);
-      return result == null ? Trip.TripStart.PaymentType.UNRECOGNIZED : result;
+    public com.creanga.taxidatalake.protobuftrip.Trip.TripStart.PaymentType getPaymentType() {
+      com.creanga.taxidatalake.protobuftrip.Trip.TripStart.PaymentType result = com.creanga.taxidatalake.protobuftrip.Trip.TripStart.PaymentType.valueOf(paymentType_);
+      return result == null ? com.creanga.taxidatalake.protobuftrip.Trip.TripStart.PaymentType.UNRECOGNIZED : result;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -526,20 +504,26 @@ public final class Trip {
       if (!getDriverIdBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, driverId_);
       }
-      if (!getLatitudeBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, latitude_);
+      if (startLatitude_ != 0D) {
+        output.writeDouble(4, startLatitude_);
       }
-      if (!getLongitudeBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, longitude_);
+      if (startLongitude_ != 0D) {
+        output.writeDouble(5, startLongitude_);
+      }
+      if (endLatitude_ != 0D) {
+        output.writeDouble(6, endLatitude_);
+      }
+      if (endLongitude_ != 0D) {
+        output.writeDouble(7, endLongitude_);
       }
       if (orderTimestamp_ != 0L) {
-        output.writeInt64(6, orderTimestamp_);
+        output.writeInt64(8, orderTimestamp_);
       }
-      if (startTimestamp_ != 0L) {
-        output.writeInt64(7, startTimestamp_);
+      if (tripTimestamp_ != 0L) {
+        output.writeInt64(9, tripTimestamp_);
       }
-      if (paymentType_ != Trip.TripStart.PaymentType.CASH.getNumber()) {
-        output.writeEnum(8, paymentType_);
+      if (paymentType_ != com.creanga.taxidatalake.protobuftrip.Trip.TripStart.PaymentType.CASH.getNumber()) {
+        output.writeEnum(10, paymentType_);
       }
     }
 
@@ -557,23 +541,33 @@ public final class Trip {
       if (!getDriverIdBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, driverId_);
       }
-      if (!getLatitudeBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, latitude_);
+      if (startLatitude_ != 0D) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(4, startLatitude_);
       }
-      if (!getLongitudeBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, longitude_);
+      if (startLongitude_ != 0D) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(5, startLongitude_);
+      }
+      if (endLatitude_ != 0D) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(6, endLatitude_);
+      }
+      if (endLongitude_ != 0D) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(7, endLongitude_);
       }
       if (orderTimestamp_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(6, orderTimestamp_);
+          .computeInt64Size(8, orderTimestamp_);
       }
-      if (startTimestamp_ != 0L) {
+      if (tripTimestamp_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(7, startTimestamp_);
+          .computeInt64Size(9, tripTimestamp_);
       }
-      if (paymentType_ != Trip.TripStart.PaymentType.CASH.getNumber()) {
+      if (paymentType_ != com.creanga.taxidatalake.protobuftrip.Trip.TripStart.PaymentType.CASH.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(8, paymentType_);
+          .computeEnumSize(10, paymentType_);
       }
       memoizedSize = size;
       return size;
@@ -585,10 +579,10 @@ public final class Trip {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof Trip.TripStart)) {
+      if (!(obj instanceof com.creanga.taxidatalake.protobuftrip.Trip.TripStart)) {
         return super.equals(obj);
       }
-      Trip.TripStart other = (Trip.TripStart) obj;
+      com.creanga.taxidatalake.protobuftrip.Trip.TripStart other = (com.creanga.taxidatalake.protobuftrip.Trip.TripStart) obj;
 
       boolean result = true;
       result = result && getTripId()
@@ -597,14 +591,26 @@ public final class Trip {
           .equals(other.getUserId());
       result = result && getDriverId()
           .equals(other.getDriverId());
-      result = result && getLatitude()
-          .equals(other.getLatitude());
-      result = result && getLongitude()
-          .equals(other.getLongitude());
+      result = result && (
+          java.lang.Double.doubleToLongBits(getStartLatitude())
+          == java.lang.Double.doubleToLongBits(
+              other.getStartLatitude()));
+      result = result && (
+          java.lang.Double.doubleToLongBits(getStartLongitude())
+          == java.lang.Double.doubleToLongBits(
+              other.getStartLongitude()));
+      result = result && (
+          java.lang.Double.doubleToLongBits(getEndLatitude())
+          == java.lang.Double.doubleToLongBits(
+              other.getEndLatitude()));
+      result = result && (
+          java.lang.Double.doubleToLongBits(getEndLongitude())
+          == java.lang.Double.doubleToLongBits(
+              other.getEndLongitude()));
       result = result && (getOrderTimestamp()
           == other.getOrderTimestamp());
-      result = result && (getStartTimestamp()
-          == other.getStartTimestamp());
+      result = result && (getTripTimestamp()
+          == other.getTripTimestamp());
       result = result && paymentType_ == other.paymentType_;
       return result;
     }
@@ -622,16 +628,24 @@ public final class Trip {
       hash = (53 * hash) + getUserId().hashCode();
       hash = (37 * hash) + DRIVER_ID_FIELD_NUMBER;
       hash = (53 * hash) + getDriverId().hashCode();
-      hash = (37 * hash) + LATITUDE_FIELD_NUMBER;
-      hash = (53 * hash) + getLatitude().hashCode();
-      hash = (37 * hash) + LONGITUDE_FIELD_NUMBER;
-      hash = (53 * hash) + getLongitude().hashCode();
+      hash = (37 * hash) + START_LATITUDE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getStartLatitude()));
+      hash = (37 * hash) + START_LONGITUDE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getStartLongitude()));
+      hash = (37 * hash) + END_LATITUDE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getEndLatitude()));
+      hash = (37 * hash) + END_LONGITUDE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getEndLongitude()));
       hash = (37 * hash) + ORDER_TIMESTAMP_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getOrderTimestamp());
-      hash = (37 * hash) + START_TIMESTAMP_FIELD_NUMBER;
+      hash = (37 * hash) + TRIP_TIMESTAMP_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getStartTimestamp());
+          getTripTimestamp());
       hash = (37 * hash) + PAYMENT_TYPE_FIELD_NUMBER;
       hash = (53 * hash) + paymentType_;
       hash = (29 * hash) + unknownFields.hashCode();
@@ -639,58 +653,58 @@ public final class Trip {
       return hash;
     }
 
-    public static Trip.TripStart parseFrom(
+    public static com.creanga.taxidatalake.protobuftrip.Trip.TripStart parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Trip.TripStart parseFrom(
+    public static com.creanga.taxidatalake.protobuftrip.Trip.TripStart parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Trip.TripStart parseFrom(byte[] data)
+    public static com.creanga.taxidatalake.protobuftrip.Trip.TripStart parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Trip.TripStart parseFrom(
+    public static com.creanga.taxidatalake.protobuftrip.Trip.TripStart parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Trip.TripStart parseFrom(java.io.InputStream input)
+    public static com.creanga.taxidatalake.protobuftrip.Trip.TripStart parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Trip.TripStart parseFrom(
+    public static com.creanga.taxidatalake.protobuftrip.Trip.TripStart parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Trip.TripStart parseDelimitedFrom(java.io.InputStream input)
+    public static com.creanga.taxidatalake.protobuftrip.Trip.TripStart parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static Trip.TripStart parseDelimitedFrom(
+    public static com.creanga.taxidatalake.protobuftrip.Trip.TripStart parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Trip.TripStart parseFrom(
+    public static com.creanga.taxidatalake.protobuftrip.Trip.TripStart parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Trip.TripStart parseFrom(
+    public static com.creanga.taxidatalake.protobuftrip.Trip.TripStart parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -702,7 +716,7 @@ public final class Trip {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(Trip.TripStart prototype) {
+    public static Builder newBuilder(com.creanga.taxidatalake.protobuftrip.Trip.TripStart prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() {
@@ -717,25 +731,25 @@ public final class Trip {
       return builder;
     }
     /**
-     * Protobuf type {@code com.creanga.datalake.protobuftrip.TripStart}
+     * Protobuf type {@code com.creanga.taxidatalake.protobuftrip.TripStart}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.creanga.datalake.protobuftrip.TripStart)
-        Trip.TripStartOrBuilder {
+        // @@protoc_insertion_point(builder_implements:com.creanga.taxidatalake.protobuftrip.TripStart)
+        com.creanga.taxidatalake.protobuftrip.Trip.TripStartOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return Trip.internal_static_com_creanga_datalake_protobuftrip_TripStart_descriptor;
+        return com.creanga.taxidatalake.protobuftrip.Trip.internal_static_com_creanga_taxidatalake_protobuftrip_TripStart_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return Trip.internal_static_com_creanga_datalake_protobuftrip_TripStart_fieldAccessorTable
+        return com.creanga.taxidatalake.protobuftrip.Trip.internal_static_com_creanga_taxidatalake_protobuftrip_TripStart_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                Trip.TripStart.class, Trip.TripStart.Builder.class);
+                com.creanga.taxidatalake.protobuftrip.Trip.TripStart.class, com.creanga.taxidatalake.protobuftrip.Trip.TripStart.Builder.class);
       }
 
-      // Construct using com.creanga.datalake.protobuftrip.Trip.TripStart.newBuilder()
+      // Construct using com.creanga.taxidatalake.protobuftrip.Trip.TripStart.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -758,13 +772,17 @@ public final class Trip {
 
         driverId_ = "";
 
-        latitude_ = "";
+        startLatitude_ = 0D;
 
-        longitude_ = "";
+        startLongitude_ = 0D;
+
+        endLatitude_ = 0D;
+
+        endLongitude_ = 0D;
 
         orderTimestamp_ = 0L;
 
-        startTimestamp_ = 0L;
+        tripTimestamp_ = 0L;
 
         paymentType_ = 0;
 
@@ -773,30 +791,32 @@ public final class Trip {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return Trip.internal_static_com_creanga_datalake_protobuftrip_TripStart_descriptor;
+        return com.creanga.taxidatalake.protobuftrip.Trip.internal_static_com_creanga_taxidatalake_protobuftrip_TripStart_descriptor;
       }
 
-      public Trip.TripStart getDefaultInstanceForType() {
-        return Trip.TripStart.getDefaultInstance();
+      public com.creanga.taxidatalake.protobuftrip.Trip.TripStart getDefaultInstanceForType() {
+        return com.creanga.taxidatalake.protobuftrip.Trip.TripStart.getDefaultInstance();
       }
 
-      public Trip.TripStart build() {
-        Trip.TripStart result = buildPartial();
+      public com.creanga.taxidatalake.protobuftrip.Trip.TripStart build() {
+        com.creanga.taxidatalake.protobuftrip.Trip.TripStart result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public Trip.TripStart buildPartial() {
-        Trip.TripStart result = new Trip.TripStart(this);
+      public com.creanga.taxidatalake.protobuftrip.Trip.TripStart buildPartial() {
+        com.creanga.taxidatalake.protobuftrip.Trip.TripStart result = new com.creanga.taxidatalake.protobuftrip.Trip.TripStart(this);
         result.tripId_ = tripId_;
         result.userId_ = userId_;
         result.driverId_ = driverId_;
-        result.latitude_ = latitude_;
-        result.longitude_ = longitude_;
+        result.startLatitude_ = startLatitude_;
+        result.startLongitude_ = startLongitude_;
+        result.endLatitude_ = endLatitude_;
+        result.endLongitude_ = endLongitude_;
         result.orderTimestamp_ = orderTimestamp_;
-        result.startTimestamp_ = startTimestamp_;
+        result.tripTimestamp_ = tripTimestamp_;
         result.paymentType_ = paymentType_;
         onBuilt();
         return result;
@@ -829,16 +849,16 @@ public final class Trip {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof Trip.TripStart) {
-          return mergeFrom((Trip.TripStart)other);
+        if (other instanceof com.creanga.taxidatalake.protobuftrip.Trip.TripStart) {
+          return mergeFrom((com.creanga.taxidatalake.protobuftrip.Trip.TripStart)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(Trip.TripStart other) {
-        if (other == Trip.TripStart.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.creanga.taxidatalake.protobuftrip.Trip.TripStart other) {
+        if (other == com.creanga.taxidatalake.protobuftrip.Trip.TripStart.getDefaultInstance()) return this;
         if (!other.getTripId().isEmpty()) {
           tripId_ = other.tripId_;
           onChanged();
@@ -851,19 +871,23 @@ public final class Trip {
           driverId_ = other.driverId_;
           onChanged();
         }
-        if (!other.getLatitude().isEmpty()) {
-          latitude_ = other.latitude_;
-          onChanged();
+        if (other.getStartLatitude() != 0D) {
+          setStartLatitude(other.getStartLatitude());
         }
-        if (!other.getLongitude().isEmpty()) {
-          longitude_ = other.longitude_;
-          onChanged();
+        if (other.getStartLongitude() != 0D) {
+          setStartLongitude(other.getStartLongitude());
+        }
+        if (other.getEndLatitude() != 0D) {
+          setEndLatitude(other.getEndLatitude());
+        }
+        if (other.getEndLongitude() != 0D) {
+          setEndLongitude(other.getEndLongitude());
         }
         if (other.getOrderTimestamp() != 0L) {
           setOrderTimestamp(other.getOrderTimestamp());
         }
-        if (other.getStartTimestamp() != 0L) {
-          setStartTimestamp(other.getStartTimestamp());
+        if (other.getTripTimestamp() != 0L) {
+          setTripTimestamp(other.getTripTimestamp());
         }
         if (other.paymentType_ != 0) {
           setPaymentTypeValue(other.getPaymentTypeValue());
@@ -880,11 +904,11 @@ public final class Trip {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        Trip.TripStart parsedMessage = null;
+        com.creanga.taxidatalake.protobuftrip.Trip.TripStart parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (Trip.TripStart) e.getUnfinishedMessage();
+          parsedMessage = (com.creanga.taxidatalake.protobuftrip.Trip.TripStart) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -1101,153 +1125,119 @@ public final class Trip {
         return this;
       }
 
-      private java.lang.Object latitude_ = "";
+      private double startLatitude_ ;
       /**
-       * <code>optional string latitude = 4;</code>
+       * <code>optional double start_latitude = 4;</code>
        */
-      public java.lang.String getLatitude() {
-        java.lang.Object ref = latitude_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          latitude_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      public double getStartLatitude() {
+        return startLatitude_;
       }
       /**
-       * <code>optional string latitude = 4;</code>
+       * <code>optional double start_latitude = 4;</code>
        */
-      public com.google.protobuf.ByteString
-          getLatitudeBytes() {
-        java.lang.Object ref = latitude_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          latitude_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string latitude = 4;</code>
-       */
-      public Builder setLatitude(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        latitude_ = value;
+      public Builder setStartLatitude(double value) {
+        
+        startLatitude_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string latitude = 4;</code>
+       * <code>optional double start_latitude = 4;</code>
        */
-      public Builder clearLatitude() {
+      public Builder clearStartLatitude() {
         
-        latitude_ = getDefaultInstance().getLatitude();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string latitude = 4;</code>
-       */
-      public Builder setLatitudeBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        latitude_ = value;
+        startLatitude_ = 0D;
         onChanged();
         return this;
       }
 
-      private java.lang.Object longitude_ = "";
+      private double startLongitude_ ;
       /**
-       * <code>optional string longitude = 5;</code>
+       * <code>optional double start_longitude = 5;</code>
        */
-      public java.lang.String getLongitude() {
-        java.lang.Object ref = longitude_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          longitude_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      public double getStartLongitude() {
+        return startLongitude_;
       }
       /**
-       * <code>optional string longitude = 5;</code>
+       * <code>optional double start_longitude = 5;</code>
        */
-      public com.google.protobuf.ByteString
-          getLongitudeBytes() {
-        java.lang.Object ref = longitude_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          longitude_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string longitude = 5;</code>
-       */
-      public Builder setLongitude(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        longitude_ = value;
+      public Builder setStartLongitude(double value) {
+        
+        startLongitude_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string longitude = 5;</code>
+       * <code>optional double start_longitude = 5;</code>
        */
-      public Builder clearLongitude() {
+      public Builder clearStartLongitude() {
         
-        longitude_ = getDefaultInstance().getLongitude();
+        startLongitude_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private double endLatitude_ ;
+      /**
+       * <code>optional double end_latitude = 6;</code>
+       */
+      public double getEndLatitude() {
+        return endLatitude_;
+      }
+      /**
+       * <code>optional double end_latitude = 6;</code>
+       */
+      public Builder setEndLatitude(double value) {
+        
+        endLatitude_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string longitude = 5;</code>
+       * <code>optional double end_latitude = 6;</code>
        */
-      public Builder setLongitudeBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
+      public Builder clearEndLatitude() {
         
-        longitude_ = value;
+        endLatitude_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private double endLongitude_ ;
+      /**
+       * <code>optional double end_longitude = 7;</code>
+       */
+      public double getEndLongitude() {
+        return endLongitude_;
+      }
+      /**
+       * <code>optional double end_longitude = 7;</code>
+       */
+      public Builder setEndLongitude(double value) {
+        
+        endLongitude_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional double end_longitude = 7;</code>
+       */
+      public Builder clearEndLongitude() {
+        
+        endLongitude_ = 0D;
         onChanged();
         return this;
       }
 
       private long orderTimestamp_ ;
       /**
-       * <code>optional int64 order_timestamp = 6;</code>
+       * <code>optional int64 order_timestamp = 8;</code>
        */
       public long getOrderTimestamp() {
         return orderTimestamp_;
       }
       /**
-       * <code>optional int64 order_timestamp = 6;</code>
+       * <code>optional int64 order_timestamp = 8;</code>
        */
       public Builder setOrderTimestamp(long value) {
         
@@ -1256,7 +1246,7 @@ public final class Trip {
         return this;
       }
       /**
-       * <code>optional int64 order_timestamp = 6;</code>
+       * <code>optional int64 order_timestamp = 8;</code>
        */
       public Builder clearOrderTimestamp() {
         
@@ -1265,41 +1255,41 @@ public final class Trip {
         return this;
       }
 
-      private long startTimestamp_ ;
+      private long tripTimestamp_ ;
       /**
-       * <code>optional int64 start_timestamp = 7;</code>
+       * <code>optional int64 trip_timestamp = 9;</code>
        */
-      public long getStartTimestamp() {
-        return startTimestamp_;
+      public long getTripTimestamp() {
+        return tripTimestamp_;
       }
       /**
-       * <code>optional int64 start_timestamp = 7;</code>
+       * <code>optional int64 trip_timestamp = 9;</code>
        */
-      public Builder setStartTimestamp(long value) {
+      public Builder setTripTimestamp(long value) {
         
-        startTimestamp_ = value;
+        tripTimestamp_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int64 start_timestamp = 7;</code>
+       * <code>optional int64 trip_timestamp = 9;</code>
        */
-      public Builder clearStartTimestamp() {
+      public Builder clearTripTimestamp() {
         
-        startTimestamp_ = 0L;
+        tripTimestamp_ = 0L;
         onChanged();
         return this;
       }
 
       private int paymentType_ = 0;
       /**
-       * <code>optional .com.creanga.datalake.protobuftrip.TripStart.PaymentType payment_type = 8;</code>
+       * <code>optional .com.creanga.taxidatalake.protobuftrip.TripStart.PaymentType payment_type = 10;</code>
        */
       public int getPaymentTypeValue() {
         return paymentType_;
       }
       /**
-       * <code>optional .com.creanga.datalake.protobuftrip.TripStart.PaymentType payment_type = 8;</code>
+       * <code>optional .com.creanga.taxidatalake.protobuftrip.TripStart.PaymentType payment_type = 10;</code>
        */
       public Builder setPaymentTypeValue(int value) {
         paymentType_ = value;
@@ -1307,16 +1297,16 @@ public final class Trip {
         return this;
       }
       /**
-       * <code>optional .com.creanga.datalake.protobuftrip.TripStart.PaymentType payment_type = 8;</code>
+       * <code>optional .com.creanga.taxidatalake.protobuftrip.TripStart.PaymentType payment_type = 10;</code>
        */
-      public Trip.TripStart.PaymentType getPaymentType() {
-        Trip.TripStart.PaymentType result = Trip.TripStart.PaymentType.valueOf(paymentType_);
-        return result == null ? Trip.TripStart.PaymentType.UNRECOGNIZED : result;
+      public com.creanga.taxidatalake.protobuftrip.Trip.TripStart.PaymentType getPaymentType() {
+        com.creanga.taxidatalake.protobuftrip.Trip.TripStart.PaymentType result = com.creanga.taxidatalake.protobuftrip.Trip.TripStart.PaymentType.valueOf(paymentType_);
+        return result == null ? com.creanga.taxidatalake.protobuftrip.Trip.TripStart.PaymentType.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .com.creanga.datalake.protobuftrip.TripStart.PaymentType payment_type = 8;</code>
+       * <code>optional .com.creanga.taxidatalake.protobuftrip.TripStart.PaymentType payment_type = 10;</code>
        */
-      public Builder setPaymentType(Trip.TripStart.PaymentType value) {
+      public Builder setPaymentType(com.creanga.taxidatalake.protobuftrip.Trip.TripStart.PaymentType value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -1326,7 +1316,7 @@ public final class Trip {
         return this;
       }
       /**
-       * <code>optional .com.creanga.datalake.protobuftrip.TripStart.PaymentType payment_type = 8;</code>
+       * <code>optional .com.creanga.taxidatalake.protobuftrip.TripStart.PaymentType payment_type = 10;</code>
        */
       public Builder clearPaymentType() {
         
@@ -1345,16 +1335,16 @@ public final class Trip {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:com.creanga.datalake.protobuftrip.TripStart)
+      // @@protoc_insertion_point(builder_scope:com.creanga.taxidatalake.protobuftrip.TripStart)
     }
 
-    // @@protoc_insertion_point(class_scope:com.creanga.datalake.protobuftrip.TripStart)
-    private static final Trip.TripStart DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:com.creanga.taxidatalake.protobuftrip.TripStart)
+    private static final com.creanga.taxidatalake.protobuftrip.Trip.TripStart DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new Trip.TripStart();
+      DEFAULT_INSTANCE = new com.creanga.taxidatalake.protobuftrip.Trip.TripStart();
     }
 
-    public static Trip.TripStart getDefaultInstance() {
+    public static com.creanga.taxidatalake.protobuftrip.Trip.TripStart getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -1377,14 +1367,14 @@ public final class Trip {
       return PARSER;
     }
 
-    public Trip.TripStart getDefaultInstanceForType() {
+    public com.creanga.taxidatalake.protobuftrip.Trip.TripStart getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   public interface TripEndOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.creanga.datalake.protobuftrip.TripEnd)
+      // @@protoc_insertion_point(interface_extends:com.creanga.taxidatalake.protobuftrip.TripEnd)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -1398,36 +1388,16 @@ public final class Trip {
         getTripIdBytes();
 
     /**
-     * <code>optional string latitude = 2;</code>
-     */
-    java.lang.String getLatitude();
-    /**
-     * <code>optional string latitude = 2;</code>
-     */
-    com.google.protobuf.ByteString
-        getLatitudeBytes();
-
-    /**
-     * <code>optional string longitude = 3;</code>
-     */
-    java.lang.String getLongitude();
-    /**
-     * <code>optional string longitude = 3;</code>
-     */
-    com.google.protobuf.ByteString
-        getLongitudeBytes();
-
-    /**
      * <code>optional int64 timestamp = 4;</code>
      */
     long getTimestamp();
   }
   /**
-   * Protobuf type {@code com.creanga.datalake.protobuftrip.TripEnd}
+   * Protobuf type {@code com.creanga.taxidatalake.protobuftrip.TripEnd}
    */
   public  static final class TripEnd extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:com.creanga.datalake.protobuftrip.TripEnd)
+      // @@protoc_insertion_point(message_implements:com.creanga.taxidatalake.protobuftrip.TripEnd)
       TripEndOrBuilder {
     // Use TripEnd.newBuilder() to construct.
     private TripEnd(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
@@ -1435,8 +1405,6 @@ public final class Trip {
     }
     private TripEnd() {
       tripId_ = "";
-      latitude_ = "";
-      longitude_ = "";
       timestamp_ = 0L;
     }
 
@@ -1471,18 +1439,6 @@ public final class Trip {
               tripId_ = s;
               break;
             }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              latitude_ = s;
-              break;
-            }
-            case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              longitude_ = s;
-              break;
-            }
             case 32: {
 
               timestamp_ = input.readInt64();
@@ -1501,14 +1457,14 @@ public final class Trip {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return Trip.internal_static_com_creanga_datalake_protobuftrip_TripEnd_descriptor;
+      return com.creanga.taxidatalake.protobuftrip.Trip.internal_static_com_creanga_taxidatalake_protobuftrip_TripEnd_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return Trip.internal_static_com_creanga_datalake_protobuftrip_TripEnd_fieldAccessorTable
+      return com.creanga.taxidatalake.protobuftrip.Trip.internal_static_com_creanga_taxidatalake_protobuftrip_TripEnd_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              Trip.TripEnd.class, Trip.TripEnd.Builder.class);
+              com.creanga.taxidatalake.protobuftrip.Trip.TripEnd.class, com.creanga.taxidatalake.protobuftrip.Trip.TripEnd.Builder.class);
     }
 
     public static final int TRIP_ID_FIELD_NUMBER = 1;
@@ -1545,74 +1501,6 @@ public final class Trip {
       }
     }
 
-    public static final int LATITUDE_FIELD_NUMBER = 2;
-    private volatile java.lang.Object latitude_;
-    /**
-     * <code>optional string latitude = 2;</code>
-     */
-    public java.lang.String getLatitude() {
-      java.lang.Object ref = latitude_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        latitude_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>optional string latitude = 2;</code>
-     */
-    public com.google.protobuf.ByteString
-        getLatitudeBytes() {
-      java.lang.Object ref = latitude_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        latitude_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int LONGITUDE_FIELD_NUMBER = 3;
-    private volatile java.lang.Object longitude_;
-    /**
-     * <code>optional string longitude = 3;</code>
-     */
-    public java.lang.String getLongitude() {
-      java.lang.Object ref = longitude_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        longitude_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>optional string longitude = 3;</code>
-     */
-    public com.google.protobuf.ByteString
-        getLongitudeBytes() {
-      java.lang.Object ref = longitude_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        longitude_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
     public static final int TIMESTAMP_FIELD_NUMBER = 4;
     private long timestamp_;
     /**
@@ -1637,12 +1525,6 @@ public final class Trip {
       if (!getTripIdBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, tripId_);
       }
-      if (!getLatitudeBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, latitude_);
-      }
-      if (!getLongitudeBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, longitude_);
-      }
       if (timestamp_ != 0L) {
         output.writeInt64(4, timestamp_);
       }
@@ -1655,12 +1537,6 @@ public final class Trip {
       size = 0;
       if (!getTripIdBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, tripId_);
-      }
-      if (!getLatitudeBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, latitude_);
-      }
-      if (!getLongitudeBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, longitude_);
       }
       if (timestamp_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
@@ -1676,18 +1552,14 @@ public final class Trip {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof Trip.TripEnd)) {
+      if (!(obj instanceof com.creanga.taxidatalake.protobuftrip.Trip.TripEnd)) {
         return super.equals(obj);
       }
-      Trip.TripEnd other = (Trip.TripEnd) obj;
+      com.creanga.taxidatalake.protobuftrip.Trip.TripEnd other = (com.creanga.taxidatalake.protobuftrip.Trip.TripEnd) obj;
 
       boolean result = true;
       result = result && getTripId()
           .equals(other.getTripId());
-      result = result && getLatitude()
-          .equals(other.getLatitude());
-      result = result && getLongitude()
-          .equals(other.getLongitude());
       result = result && (getTimestamp()
           == other.getTimestamp());
       return result;
@@ -1702,10 +1574,6 @@ public final class Trip {
       hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + TRIP_ID_FIELD_NUMBER;
       hash = (53 * hash) + getTripId().hashCode();
-      hash = (37 * hash) + LATITUDE_FIELD_NUMBER;
-      hash = (53 * hash) + getLatitude().hashCode();
-      hash = (37 * hash) + LONGITUDE_FIELD_NUMBER;
-      hash = (53 * hash) + getLongitude().hashCode();
       hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getTimestamp());
@@ -1714,58 +1582,58 @@ public final class Trip {
       return hash;
     }
 
-    public static Trip.TripEnd parseFrom(
+    public static com.creanga.taxidatalake.protobuftrip.Trip.TripEnd parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Trip.TripEnd parseFrom(
+    public static com.creanga.taxidatalake.protobuftrip.Trip.TripEnd parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Trip.TripEnd parseFrom(byte[] data)
+    public static com.creanga.taxidatalake.protobuftrip.Trip.TripEnd parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Trip.TripEnd parseFrom(
+    public static com.creanga.taxidatalake.protobuftrip.Trip.TripEnd parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Trip.TripEnd parseFrom(java.io.InputStream input)
+    public static com.creanga.taxidatalake.protobuftrip.Trip.TripEnd parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Trip.TripEnd parseFrom(
+    public static com.creanga.taxidatalake.protobuftrip.Trip.TripEnd parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Trip.TripEnd parseDelimitedFrom(java.io.InputStream input)
+    public static com.creanga.taxidatalake.protobuftrip.Trip.TripEnd parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static Trip.TripEnd parseDelimitedFrom(
+    public static com.creanga.taxidatalake.protobuftrip.Trip.TripEnd parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Trip.TripEnd parseFrom(
+    public static com.creanga.taxidatalake.protobuftrip.Trip.TripEnd parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Trip.TripEnd parseFrom(
+    public static com.creanga.taxidatalake.protobuftrip.Trip.TripEnd parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1777,7 +1645,7 @@ public final class Trip {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(Trip.TripEnd prototype) {
+    public static Builder newBuilder(com.creanga.taxidatalake.protobuftrip.Trip.TripEnd prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() {
@@ -1792,25 +1660,25 @@ public final class Trip {
       return builder;
     }
     /**
-     * Protobuf type {@code com.creanga.datalake.protobuftrip.TripEnd}
+     * Protobuf type {@code com.creanga.taxidatalake.protobuftrip.TripEnd}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.creanga.datalake.protobuftrip.TripEnd)
-        Trip.TripEndOrBuilder {
+        // @@protoc_insertion_point(builder_implements:com.creanga.taxidatalake.protobuftrip.TripEnd)
+        com.creanga.taxidatalake.protobuftrip.Trip.TripEndOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return Trip.internal_static_com_creanga_datalake_protobuftrip_TripEnd_descriptor;
+        return com.creanga.taxidatalake.protobuftrip.Trip.internal_static_com_creanga_taxidatalake_protobuftrip_TripEnd_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return Trip.internal_static_com_creanga_datalake_protobuftrip_TripEnd_fieldAccessorTable
+        return com.creanga.taxidatalake.protobuftrip.Trip.internal_static_com_creanga_taxidatalake_protobuftrip_TripEnd_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                Trip.TripEnd.class, Trip.TripEnd.Builder.class);
+                com.creanga.taxidatalake.protobuftrip.Trip.TripEnd.class, com.creanga.taxidatalake.protobuftrip.Trip.TripEnd.Builder.class);
       }
 
-      // Construct using com.creanga.datalake.protobuftrip.Trip.TripEnd.newBuilder()
+      // Construct using com.creanga.taxidatalake.protobuftrip.Trip.TripEnd.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1829,10 +1697,6 @@ public final class Trip {
         super.clear();
         tripId_ = "";
 
-        latitude_ = "";
-
-        longitude_ = "";
-
         timestamp_ = 0L;
 
         return this;
@@ -1840,26 +1704,24 @@ public final class Trip {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return Trip.internal_static_com_creanga_datalake_protobuftrip_TripEnd_descriptor;
+        return com.creanga.taxidatalake.protobuftrip.Trip.internal_static_com_creanga_taxidatalake_protobuftrip_TripEnd_descriptor;
       }
 
-      public Trip.TripEnd getDefaultInstanceForType() {
-        return Trip.TripEnd.getDefaultInstance();
+      public com.creanga.taxidatalake.protobuftrip.Trip.TripEnd getDefaultInstanceForType() {
+        return com.creanga.taxidatalake.protobuftrip.Trip.TripEnd.getDefaultInstance();
       }
 
-      public Trip.TripEnd build() {
-        Trip.TripEnd result = buildPartial();
+      public com.creanga.taxidatalake.protobuftrip.Trip.TripEnd build() {
+        com.creanga.taxidatalake.protobuftrip.Trip.TripEnd result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public Trip.TripEnd buildPartial() {
-        Trip.TripEnd result = new Trip.TripEnd(this);
+      public com.creanga.taxidatalake.protobuftrip.Trip.TripEnd buildPartial() {
+        com.creanga.taxidatalake.protobuftrip.Trip.TripEnd result = new com.creanga.taxidatalake.protobuftrip.Trip.TripEnd(this);
         result.tripId_ = tripId_;
-        result.latitude_ = latitude_;
-        result.longitude_ = longitude_;
         result.timestamp_ = timestamp_;
         onBuilt();
         return result;
@@ -1892,26 +1754,18 @@ public final class Trip {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof Trip.TripEnd) {
-          return mergeFrom((Trip.TripEnd)other);
+        if (other instanceof com.creanga.taxidatalake.protobuftrip.Trip.TripEnd) {
+          return mergeFrom((com.creanga.taxidatalake.protobuftrip.Trip.TripEnd)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(Trip.TripEnd other) {
-        if (other == Trip.TripEnd.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.creanga.taxidatalake.protobuftrip.Trip.TripEnd other) {
+        if (other == com.creanga.taxidatalake.protobuftrip.Trip.TripEnd.getDefaultInstance()) return this;
         if (!other.getTripId().isEmpty()) {
           tripId_ = other.tripId_;
-          onChanged();
-        }
-        if (!other.getLatitude().isEmpty()) {
-          latitude_ = other.latitude_;
-          onChanged();
-        }
-        if (!other.getLongitude().isEmpty()) {
-          longitude_ = other.longitude_;
           onChanged();
         }
         if (other.getTimestamp() != 0L) {
@@ -1929,11 +1783,11 @@ public final class Trip {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        Trip.TripEnd parsedMessage = null;
+        com.creanga.taxidatalake.protobuftrip.Trip.TripEnd parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (Trip.TripEnd) e.getUnfinishedMessage();
+          parsedMessage = (com.creanga.taxidatalake.protobuftrip.Trip.TripEnd) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -2008,144 +1862,6 @@ public final class Trip {
   checkByteStringIsUtf8(value);
         
         tripId_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object latitude_ = "";
-      /**
-       * <code>optional string latitude = 2;</code>
-       */
-      public java.lang.String getLatitude() {
-        java.lang.Object ref = latitude_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          latitude_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string latitude = 2;</code>
-       */
-      public com.google.protobuf.ByteString
-          getLatitudeBytes() {
-        java.lang.Object ref = latitude_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          latitude_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string latitude = 2;</code>
-       */
-      public Builder setLatitude(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        latitude_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string latitude = 2;</code>
-       */
-      public Builder clearLatitude() {
-        
-        latitude_ = getDefaultInstance().getLatitude();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string latitude = 2;</code>
-       */
-      public Builder setLatitudeBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        latitude_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object longitude_ = "";
-      /**
-       * <code>optional string longitude = 3;</code>
-       */
-      public java.lang.String getLongitude() {
-        java.lang.Object ref = longitude_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          longitude_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string longitude = 3;</code>
-       */
-      public com.google.protobuf.ByteString
-          getLongitudeBytes() {
-        java.lang.Object ref = longitude_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          longitude_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string longitude = 3;</code>
-       */
-      public Builder setLongitude(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        longitude_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string longitude = 3;</code>
-       */
-      public Builder clearLongitude() {
-        
-        longitude_ = getDefaultInstance().getLongitude();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string longitude = 3;</code>
-       */
-      public Builder setLongitudeBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        longitude_ = value;
         onChanged();
         return this;
       }
@@ -2186,16 +1902,16 @@ public final class Trip {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:com.creanga.datalake.protobuftrip.TripEnd)
+      // @@protoc_insertion_point(builder_scope:com.creanga.taxidatalake.protobuftrip.TripEnd)
     }
 
-    // @@protoc_insertion_point(class_scope:com.creanga.datalake.protobuftrip.TripEnd)
-    private static final Trip.TripEnd DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:com.creanga.taxidatalake.protobuftrip.TripEnd)
+    private static final com.creanga.taxidatalake.protobuftrip.Trip.TripEnd DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new Trip.TripEnd();
+      DEFAULT_INSTANCE = new com.creanga.taxidatalake.protobuftrip.Trip.TripEnd();
     }
 
-    public static Trip.TripEnd getDefaultInstance() {
+    public static com.creanga.taxidatalake.protobuftrip.Trip.TripEnd getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -2218,14 +1934,14 @@ public final class Trip {
       return PARSER;
     }
 
-    public Trip.TripEnd getDefaultInstanceForType() {
+    public com.creanga.taxidatalake.protobuftrip.Trip.TripEnd getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   public interface TripStopOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.creanga.datalake.protobuftrip.TripStop)
+      // @@protoc_insertion_point(interface_extends:com.creanga.taxidatalake.protobuftrip.TripStop)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -2239,24 +1955,14 @@ public final class Trip {
         getTripIdBytes();
 
     /**
-     * <code>optional string latitude = 2;</code>
+     * <code>optional double latitude = 2;</code>
      */
-    java.lang.String getLatitude();
-    /**
-     * <code>optional string latitude = 2;</code>
-     */
-    com.google.protobuf.ByteString
-        getLatitudeBytes();
+    double getLatitude();
 
     /**
-     * <code>optional string longitude = 3;</code>
+     * <code>optional double longitude = 3;</code>
      */
-    java.lang.String getLongitude();
-    /**
-     * <code>optional string longitude = 3;</code>
-     */
-    com.google.protobuf.ByteString
-        getLongitudeBytes();
+    double getLongitude();
 
     /**
      * <code>optional int64 stop_timestamp = 4;</code>
@@ -2269,11 +1975,11 @@ public final class Trip {
     long getStartTimestamp();
   }
   /**
-   * Protobuf type {@code com.creanga.datalake.protobuftrip.TripStop}
+   * Protobuf type {@code com.creanga.taxidatalake.protobuftrip.TripStop}
    */
   public  static final class TripStop extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:com.creanga.datalake.protobuftrip.TripStop)
+      // @@protoc_insertion_point(message_implements:com.creanga.taxidatalake.protobuftrip.TripStop)
       TripStopOrBuilder {
     // Use TripStop.newBuilder() to construct.
     private TripStop(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
@@ -2281,8 +1987,8 @@ public final class Trip {
     }
     private TripStop() {
       tripId_ = "";
-      latitude_ = "";
-      longitude_ = "";
+      latitude_ = 0D;
+      longitude_ = 0D;
       stopTimestamp_ = 0L;
       startTimestamp_ = 0L;
     }
@@ -2318,16 +2024,14 @@ public final class Trip {
               tripId_ = s;
               break;
             }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 17: {
 
-              latitude_ = s;
+              latitude_ = input.readDouble();
               break;
             }
-            case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 25: {
 
-              longitude_ = s;
+              longitude_ = input.readDouble();
               break;
             }
             case 32: {
@@ -2353,14 +2057,14 @@ public final class Trip {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return Trip.internal_static_com_creanga_datalake_protobuftrip_TripStop_descriptor;
+      return com.creanga.taxidatalake.protobuftrip.Trip.internal_static_com_creanga_taxidatalake_protobuftrip_TripStop_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return Trip.internal_static_com_creanga_datalake_protobuftrip_TripStop_fieldAccessorTable
+      return com.creanga.taxidatalake.protobuftrip.Trip.internal_static_com_creanga_taxidatalake_protobuftrip_TripStop_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              Trip.TripStop.class, Trip.TripStop.Builder.class);
+              com.creanga.taxidatalake.protobuftrip.Trip.TripStop.class, com.creanga.taxidatalake.protobuftrip.Trip.TripStop.Builder.class);
     }
 
     public static final int TRIP_ID_FIELD_NUMBER = 1;
@@ -2398,71 +2102,21 @@ public final class Trip {
     }
 
     public static final int LATITUDE_FIELD_NUMBER = 2;
-    private volatile java.lang.Object latitude_;
+    private double latitude_;
     /**
-     * <code>optional string latitude = 2;</code>
+     * <code>optional double latitude = 2;</code>
      */
-    public java.lang.String getLatitude() {
-      java.lang.Object ref = latitude_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        latitude_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>optional string latitude = 2;</code>
-     */
-    public com.google.protobuf.ByteString
-        getLatitudeBytes() {
-      java.lang.Object ref = latitude_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        latitude_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public double getLatitude() {
+      return latitude_;
     }
 
     public static final int LONGITUDE_FIELD_NUMBER = 3;
-    private volatile java.lang.Object longitude_;
+    private double longitude_;
     /**
-     * <code>optional string longitude = 3;</code>
+     * <code>optional double longitude = 3;</code>
      */
-    public java.lang.String getLongitude() {
-      java.lang.Object ref = longitude_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        longitude_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>optional string longitude = 3;</code>
-     */
-    public com.google.protobuf.ByteString
-        getLongitudeBytes() {
-      java.lang.Object ref = longitude_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        longitude_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public double getLongitude() {
+      return longitude_;
     }
 
     public static final int STOP_TIMESTAMP_FIELD_NUMBER = 4;
@@ -2498,11 +2152,11 @@ public final class Trip {
       if (!getTripIdBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, tripId_);
       }
-      if (!getLatitudeBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, latitude_);
+      if (latitude_ != 0D) {
+        output.writeDouble(2, latitude_);
       }
-      if (!getLongitudeBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, longitude_);
+      if (longitude_ != 0D) {
+        output.writeDouble(3, longitude_);
       }
       if (stopTimestamp_ != 0L) {
         output.writeInt64(4, stopTimestamp_);
@@ -2520,11 +2174,13 @@ public final class Trip {
       if (!getTripIdBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, tripId_);
       }
-      if (!getLatitudeBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, latitude_);
+      if (latitude_ != 0D) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(2, latitude_);
       }
-      if (!getLongitudeBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, longitude_);
+      if (longitude_ != 0D) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(3, longitude_);
       }
       if (stopTimestamp_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
@@ -2544,18 +2200,22 @@ public final class Trip {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof Trip.TripStop)) {
+      if (!(obj instanceof com.creanga.taxidatalake.protobuftrip.Trip.TripStop)) {
         return super.equals(obj);
       }
-      Trip.TripStop other = (Trip.TripStop) obj;
+      com.creanga.taxidatalake.protobuftrip.Trip.TripStop other = (com.creanga.taxidatalake.protobuftrip.Trip.TripStop) obj;
 
       boolean result = true;
       result = result && getTripId()
           .equals(other.getTripId());
-      result = result && getLatitude()
-          .equals(other.getLatitude());
-      result = result && getLongitude()
-          .equals(other.getLongitude());
+      result = result && (
+          java.lang.Double.doubleToLongBits(getLatitude())
+          == java.lang.Double.doubleToLongBits(
+              other.getLatitude()));
+      result = result && (
+          java.lang.Double.doubleToLongBits(getLongitude())
+          == java.lang.Double.doubleToLongBits(
+              other.getLongitude()));
       result = result && (getStopTimestamp()
           == other.getStopTimestamp());
       result = result && (getStartTimestamp()
@@ -2573,9 +2233,11 @@ public final class Trip {
       hash = (37 * hash) + TRIP_ID_FIELD_NUMBER;
       hash = (53 * hash) + getTripId().hashCode();
       hash = (37 * hash) + LATITUDE_FIELD_NUMBER;
-      hash = (53 * hash) + getLatitude().hashCode();
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getLatitude()));
       hash = (37 * hash) + LONGITUDE_FIELD_NUMBER;
-      hash = (53 * hash) + getLongitude().hashCode();
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getLongitude()));
       hash = (37 * hash) + STOP_TIMESTAMP_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getStopTimestamp());
@@ -2587,58 +2249,58 @@ public final class Trip {
       return hash;
     }
 
-    public static Trip.TripStop parseFrom(
+    public static com.creanga.taxidatalake.protobuftrip.Trip.TripStop parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Trip.TripStop parseFrom(
+    public static com.creanga.taxidatalake.protobuftrip.Trip.TripStop parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Trip.TripStop parseFrom(byte[] data)
+    public static com.creanga.taxidatalake.protobuftrip.Trip.TripStop parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Trip.TripStop parseFrom(
+    public static com.creanga.taxidatalake.protobuftrip.Trip.TripStop parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Trip.TripStop parseFrom(java.io.InputStream input)
+    public static com.creanga.taxidatalake.protobuftrip.Trip.TripStop parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Trip.TripStop parseFrom(
+    public static com.creanga.taxidatalake.protobuftrip.Trip.TripStop parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Trip.TripStop parseDelimitedFrom(java.io.InputStream input)
+    public static com.creanga.taxidatalake.protobuftrip.Trip.TripStop parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static Trip.TripStop parseDelimitedFrom(
+    public static com.creanga.taxidatalake.protobuftrip.Trip.TripStop parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Trip.TripStop parseFrom(
+    public static com.creanga.taxidatalake.protobuftrip.Trip.TripStop parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Trip.TripStop parseFrom(
+    public static com.creanga.taxidatalake.protobuftrip.Trip.TripStop parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -2650,7 +2312,7 @@ public final class Trip {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(Trip.TripStop prototype) {
+    public static Builder newBuilder(com.creanga.taxidatalake.protobuftrip.Trip.TripStop prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() {
@@ -2665,25 +2327,25 @@ public final class Trip {
       return builder;
     }
     /**
-     * Protobuf type {@code com.creanga.datalake.protobuftrip.TripStop}
+     * Protobuf type {@code com.creanga.taxidatalake.protobuftrip.TripStop}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.creanga.datalake.protobuftrip.TripStop)
-        Trip.TripStopOrBuilder {
+        // @@protoc_insertion_point(builder_implements:com.creanga.taxidatalake.protobuftrip.TripStop)
+        com.creanga.taxidatalake.protobuftrip.Trip.TripStopOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return Trip.internal_static_com_creanga_datalake_protobuftrip_TripStop_descriptor;
+        return com.creanga.taxidatalake.protobuftrip.Trip.internal_static_com_creanga_taxidatalake_protobuftrip_TripStop_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return Trip.internal_static_com_creanga_datalake_protobuftrip_TripStop_fieldAccessorTable
+        return com.creanga.taxidatalake.protobuftrip.Trip.internal_static_com_creanga_taxidatalake_protobuftrip_TripStop_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                Trip.TripStop.class, Trip.TripStop.Builder.class);
+                com.creanga.taxidatalake.protobuftrip.Trip.TripStop.class, com.creanga.taxidatalake.protobuftrip.Trip.TripStop.Builder.class);
       }
 
-      // Construct using com.creanga.datalake.protobuftrip.Trip.TripStop.newBuilder()
+      // Construct using com.creanga.taxidatalake.protobuftrip.Trip.TripStop.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -2702,9 +2364,9 @@ public final class Trip {
         super.clear();
         tripId_ = "";
 
-        latitude_ = "";
+        latitude_ = 0D;
 
-        longitude_ = "";
+        longitude_ = 0D;
 
         stopTimestamp_ = 0L;
 
@@ -2715,23 +2377,23 @@ public final class Trip {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return Trip.internal_static_com_creanga_datalake_protobuftrip_TripStop_descriptor;
+        return com.creanga.taxidatalake.protobuftrip.Trip.internal_static_com_creanga_taxidatalake_protobuftrip_TripStop_descriptor;
       }
 
-      public Trip.TripStop getDefaultInstanceForType() {
-        return Trip.TripStop.getDefaultInstance();
+      public com.creanga.taxidatalake.protobuftrip.Trip.TripStop getDefaultInstanceForType() {
+        return com.creanga.taxidatalake.protobuftrip.Trip.TripStop.getDefaultInstance();
       }
 
-      public Trip.TripStop build() {
-        Trip.TripStop result = buildPartial();
+      public com.creanga.taxidatalake.protobuftrip.Trip.TripStop build() {
+        com.creanga.taxidatalake.protobuftrip.Trip.TripStop result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public Trip.TripStop buildPartial() {
-        Trip.TripStop result = new Trip.TripStop(this);
+      public com.creanga.taxidatalake.protobuftrip.Trip.TripStop buildPartial() {
+        com.creanga.taxidatalake.protobuftrip.Trip.TripStop result = new com.creanga.taxidatalake.protobuftrip.Trip.TripStop(this);
         result.tripId_ = tripId_;
         result.latitude_ = latitude_;
         result.longitude_ = longitude_;
@@ -2768,27 +2430,25 @@ public final class Trip {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof Trip.TripStop) {
-          return mergeFrom((Trip.TripStop)other);
+        if (other instanceof com.creanga.taxidatalake.protobuftrip.Trip.TripStop) {
+          return mergeFrom((com.creanga.taxidatalake.protobuftrip.Trip.TripStop)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(Trip.TripStop other) {
-        if (other == Trip.TripStop.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.creanga.taxidatalake.protobuftrip.Trip.TripStop other) {
+        if (other == com.creanga.taxidatalake.protobuftrip.Trip.TripStop.getDefaultInstance()) return this;
         if (!other.getTripId().isEmpty()) {
           tripId_ = other.tripId_;
           onChanged();
         }
-        if (!other.getLatitude().isEmpty()) {
-          latitude_ = other.latitude_;
-          onChanged();
+        if (other.getLatitude() != 0D) {
+          setLatitude(other.getLatitude());
         }
-        if (!other.getLongitude().isEmpty()) {
-          longitude_ = other.longitude_;
-          onChanged();
+        if (other.getLongitude() != 0D) {
+          setLongitude(other.getLongitude());
         }
         if (other.getStopTimestamp() != 0L) {
           setStopTimestamp(other.getStopTimestamp());
@@ -2808,11 +2468,11 @@ public final class Trip {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        Trip.TripStop parsedMessage = null;
+        com.creanga.taxidatalake.protobuftrip.Trip.TripStop parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (Trip.TripStop) e.getUnfinishedMessage();
+          parsedMessage = (com.creanga.taxidatalake.protobuftrip.Trip.TripStop) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -2891,140 +2551,54 @@ public final class Trip {
         return this;
       }
 
-      private java.lang.Object latitude_ = "";
+      private double latitude_ ;
       /**
-       * <code>optional string latitude = 2;</code>
+       * <code>optional double latitude = 2;</code>
        */
-      public java.lang.String getLatitude() {
-        java.lang.Object ref = latitude_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          latitude_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      public double getLatitude() {
+        return latitude_;
       }
       /**
-       * <code>optional string latitude = 2;</code>
+       * <code>optional double latitude = 2;</code>
        */
-      public com.google.protobuf.ByteString
-          getLatitudeBytes() {
-        java.lang.Object ref = latitude_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          latitude_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string latitude = 2;</code>
-       */
-      public Builder setLatitude(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+      public Builder setLatitude(double value) {
+        
         latitude_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string latitude = 2;</code>
+       * <code>optional double latitude = 2;</code>
        */
       public Builder clearLatitude() {
         
-        latitude_ = getDefaultInstance().getLatitude();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string latitude = 2;</code>
-       */
-      public Builder setLatitudeBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        latitude_ = value;
+        latitude_ = 0D;
         onChanged();
         return this;
       }
 
-      private java.lang.Object longitude_ = "";
+      private double longitude_ ;
       /**
-       * <code>optional string longitude = 3;</code>
+       * <code>optional double longitude = 3;</code>
        */
-      public java.lang.String getLongitude() {
-        java.lang.Object ref = longitude_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          longitude_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      public double getLongitude() {
+        return longitude_;
       }
       /**
-       * <code>optional string longitude = 3;</code>
+       * <code>optional double longitude = 3;</code>
        */
-      public com.google.protobuf.ByteString
-          getLongitudeBytes() {
-        java.lang.Object ref = longitude_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          longitude_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string longitude = 3;</code>
-       */
-      public Builder setLongitude(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+      public Builder setLongitude(double value) {
+        
         longitude_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string longitude = 3;</code>
+       * <code>optional double longitude = 3;</code>
        */
       public Builder clearLongitude() {
         
-        longitude_ = getDefaultInstance().getLongitude();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string longitude = 3;</code>
-       */
-      public Builder setLongitudeBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        longitude_ = value;
+        longitude_ = 0D;
         onChanged();
         return this;
       }
@@ -3091,16 +2665,16 @@ public final class Trip {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:com.creanga.datalake.protobuftrip.TripStop)
+      // @@protoc_insertion_point(builder_scope:com.creanga.taxidatalake.protobuftrip.TripStop)
     }
 
-    // @@protoc_insertion_point(class_scope:com.creanga.datalake.protobuftrip.TripStop)
-    private static final Trip.TripStop DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:com.creanga.taxidatalake.protobuftrip.TripStop)
+    private static final com.creanga.taxidatalake.protobuftrip.Trip.TripStop DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new Trip.TripStop();
+      DEFAULT_INSTANCE = new com.creanga.taxidatalake.protobuftrip.Trip.TripStop();
     }
 
-    public static Trip.TripStop getDefaultInstance() {
+    public static com.creanga.taxidatalake.protobuftrip.Trip.TripStop getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -3123,14 +2697,14 @@ public final class Trip {
       return PARSER;
     }
 
-    public Trip.TripStop getDefaultInstanceForType() {
+    public com.creanga.taxidatalake.protobuftrip.Trip.TripStop getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   public interface TripPingOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.creanga.datalake.protobuftrip.TripPing)
+      // @@protoc_insertion_point(interface_extends:com.creanga.taxidatalake.protobuftrip.TripPing)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -3144,24 +2718,14 @@ public final class Trip {
         getTripIdBytes();
 
     /**
-     * <code>optional string latitude = 2;</code>
+     * <code>optional double latitude = 2;</code>
      */
-    java.lang.String getLatitude();
-    /**
-     * <code>optional string latitude = 2;</code>
-     */
-    com.google.protobuf.ByteString
-        getLatitudeBytes();
+    double getLatitude();
 
     /**
-     * <code>optional string longitude = 3;</code>
+     * <code>optional double longitude = 3;</code>
      */
-    java.lang.String getLongitude();
-    /**
-     * <code>optional string longitude = 3;</code>
-     */
-    com.google.protobuf.ByteString
-        getLongitudeBytes();
+    double getLongitude();
 
     /**
      * <code>optional int64 timestamp = 4;</code>
@@ -3169,11 +2733,11 @@ public final class Trip {
     long getTimestamp();
   }
   /**
-   * Protobuf type {@code com.creanga.datalake.protobuftrip.TripPing}
+   * Protobuf type {@code com.creanga.taxidatalake.protobuftrip.TripPing}
    */
   public  static final class TripPing extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:com.creanga.datalake.protobuftrip.TripPing)
+      // @@protoc_insertion_point(message_implements:com.creanga.taxidatalake.protobuftrip.TripPing)
       TripPingOrBuilder {
     // Use TripPing.newBuilder() to construct.
     private TripPing(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
@@ -3181,8 +2745,8 @@ public final class Trip {
     }
     private TripPing() {
       tripId_ = "";
-      latitude_ = "";
-      longitude_ = "";
+      latitude_ = 0D;
+      longitude_ = 0D;
       timestamp_ = 0L;
     }
 
@@ -3217,16 +2781,14 @@ public final class Trip {
               tripId_ = s;
               break;
             }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 17: {
 
-              latitude_ = s;
+              latitude_ = input.readDouble();
               break;
             }
-            case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 25: {
 
-              longitude_ = s;
+              longitude_ = input.readDouble();
               break;
             }
             case 32: {
@@ -3247,14 +2809,14 @@ public final class Trip {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return Trip.internal_static_com_creanga_datalake_protobuftrip_TripPing_descriptor;
+      return com.creanga.taxidatalake.protobuftrip.Trip.internal_static_com_creanga_taxidatalake_protobuftrip_TripPing_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return Trip.internal_static_com_creanga_datalake_protobuftrip_TripPing_fieldAccessorTable
+      return com.creanga.taxidatalake.protobuftrip.Trip.internal_static_com_creanga_taxidatalake_protobuftrip_TripPing_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              Trip.TripPing.class, Trip.TripPing.Builder.class);
+              com.creanga.taxidatalake.protobuftrip.Trip.TripPing.class, com.creanga.taxidatalake.protobuftrip.Trip.TripPing.Builder.class);
     }
 
     public static final int TRIP_ID_FIELD_NUMBER = 1;
@@ -3292,71 +2854,21 @@ public final class Trip {
     }
 
     public static final int LATITUDE_FIELD_NUMBER = 2;
-    private volatile java.lang.Object latitude_;
+    private double latitude_;
     /**
-     * <code>optional string latitude = 2;</code>
+     * <code>optional double latitude = 2;</code>
      */
-    public java.lang.String getLatitude() {
-      java.lang.Object ref = latitude_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        latitude_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>optional string latitude = 2;</code>
-     */
-    public com.google.protobuf.ByteString
-        getLatitudeBytes() {
-      java.lang.Object ref = latitude_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        latitude_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public double getLatitude() {
+      return latitude_;
     }
 
     public static final int LONGITUDE_FIELD_NUMBER = 3;
-    private volatile java.lang.Object longitude_;
+    private double longitude_;
     /**
-     * <code>optional string longitude = 3;</code>
+     * <code>optional double longitude = 3;</code>
      */
-    public java.lang.String getLongitude() {
-      java.lang.Object ref = longitude_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        longitude_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>optional string longitude = 3;</code>
-     */
-    public com.google.protobuf.ByteString
-        getLongitudeBytes() {
-      java.lang.Object ref = longitude_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        longitude_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public double getLongitude() {
+      return longitude_;
     }
 
     public static final int TIMESTAMP_FIELD_NUMBER = 4;
@@ -3383,11 +2895,11 @@ public final class Trip {
       if (!getTripIdBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, tripId_);
       }
-      if (!getLatitudeBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, latitude_);
+      if (latitude_ != 0D) {
+        output.writeDouble(2, latitude_);
       }
-      if (!getLongitudeBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, longitude_);
+      if (longitude_ != 0D) {
+        output.writeDouble(3, longitude_);
       }
       if (timestamp_ != 0L) {
         output.writeInt64(4, timestamp_);
@@ -3402,11 +2914,13 @@ public final class Trip {
       if (!getTripIdBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, tripId_);
       }
-      if (!getLatitudeBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, latitude_);
+      if (latitude_ != 0D) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(2, latitude_);
       }
-      if (!getLongitudeBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, longitude_);
+      if (longitude_ != 0D) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(3, longitude_);
       }
       if (timestamp_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
@@ -3422,18 +2936,22 @@ public final class Trip {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof Trip.TripPing)) {
+      if (!(obj instanceof com.creanga.taxidatalake.protobuftrip.Trip.TripPing)) {
         return super.equals(obj);
       }
-      Trip.TripPing other = (Trip.TripPing) obj;
+      com.creanga.taxidatalake.protobuftrip.Trip.TripPing other = (com.creanga.taxidatalake.protobuftrip.Trip.TripPing) obj;
 
       boolean result = true;
       result = result && getTripId()
           .equals(other.getTripId());
-      result = result && getLatitude()
-          .equals(other.getLatitude());
-      result = result && getLongitude()
-          .equals(other.getLongitude());
+      result = result && (
+          java.lang.Double.doubleToLongBits(getLatitude())
+          == java.lang.Double.doubleToLongBits(
+              other.getLatitude()));
+      result = result && (
+          java.lang.Double.doubleToLongBits(getLongitude())
+          == java.lang.Double.doubleToLongBits(
+              other.getLongitude()));
       result = result && (getTimestamp()
           == other.getTimestamp());
       return result;
@@ -3449,9 +2967,11 @@ public final class Trip {
       hash = (37 * hash) + TRIP_ID_FIELD_NUMBER;
       hash = (53 * hash) + getTripId().hashCode();
       hash = (37 * hash) + LATITUDE_FIELD_NUMBER;
-      hash = (53 * hash) + getLatitude().hashCode();
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getLatitude()));
       hash = (37 * hash) + LONGITUDE_FIELD_NUMBER;
-      hash = (53 * hash) + getLongitude().hashCode();
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getLongitude()));
       hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getTimestamp());
@@ -3460,58 +2980,58 @@ public final class Trip {
       return hash;
     }
 
-    public static Trip.TripPing parseFrom(
+    public static com.creanga.taxidatalake.protobuftrip.Trip.TripPing parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Trip.TripPing parseFrom(
+    public static com.creanga.taxidatalake.protobuftrip.Trip.TripPing parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Trip.TripPing parseFrom(byte[] data)
+    public static com.creanga.taxidatalake.protobuftrip.Trip.TripPing parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Trip.TripPing parseFrom(
+    public static com.creanga.taxidatalake.protobuftrip.Trip.TripPing parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Trip.TripPing parseFrom(java.io.InputStream input)
+    public static com.creanga.taxidatalake.protobuftrip.Trip.TripPing parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Trip.TripPing parseFrom(
+    public static com.creanga.taxidatalake.protobuftrip.Trip.TripPing parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Trip.TripPing parseDelimitedFrom(java.io.InputStream input)
+    public static com.creanga.taxidatalake.protobuftrip.Trip.TripPing parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static Trip.TripPing parseDelimitedFrom(
+    public static com.creanga.taxidatalake.protobuftrip.Trip.TripPing parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Trip.TripPing parseFrom(
+    public static com.creanga.taxidatalake.protobuftrip.Trip.TripPing parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Trip.TripPing parseFrom(
+    public static com.creanga.taxidatalake.protobuftrip.Trip.TripPing parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -3523,7 +3043,7 @@ public final class Trip {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(Trip.TripPing prototype) {
+    public static Builder newBuilder(com.creanga.taxidatalake.protobuftrip.Trip.TripPing prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() {
@@ -3538,25 +3058,25 @@ public final class Trip {
       return builder;
     }
     /**
-     * Protobuf type {@code com.creanga.datalake.protobuftrip.TripPing}
+     * Protobuf type {@code com.creanga.taxidatalake.protobuftrip.TripPing}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.creanga.datalake.protobuftrip.TripPing)
-        Trip.TripPingOrBuilder {
+        // @@protoc_insertion_point(builder_implements:com.creanga.taxidatalake.protobuftrip.TripPing)
+        com.creanga.taxidatalake.protobuftrip.Trip.TripPingOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return Trip.internal_static_com_creanga_datalake_protobuftrip_TripPing_descriptor;
+        return com.creanga.taxidatalake.protobuftrip.Trip.internal_static_com_creanga_taxidatalake_protobuftrip_TripPing_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return Trip.internal_static_com_creanga_datalake_protobuftrip_TripPing_fieldAccessorTable
+        return com.creanga.taxidatalake.protobuftrip.Trip.internal_static_com_creanga_taxidatalake_protobuftrip_TripPing_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                Trip.TripPing.class, Trip.TripPing.Builder.class);
+                com.creanga.taxidatalake.protobuftrip.Trip.TripPing.class, com.creanga.taxidatalake.protobuftrip.Trip.TripPing.Builder.class);
       }
 
-      // Construct using com.creanga.datalake.protobuftrip.Trip.TripPing.newBuilder()
+      // Construct using com.creanga.taxidatalake.protobuftrip.Trip.TripPing.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -3575,9 +3095,9 @@ public final class Trip {
         super.clear();
         tripId_ = "";
 
-        latitude_ = "";
+        latitude_ = 0D;
 
-        longitude_ = "";
+        longitude_ = 0D;
 
         timestamp_ = 0L;
 
@@ -3586,23 +3106,23 @@ public final class Trip {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return Trip.internal_static_com_creanga_datalake_protobuftrip_TripPing_descriptor;
+        return com.creanga.taxidatalake.protobuftrip.Trip.internal_static_com_creanga_taxidatalake_protobuftrip_TripPing_descriptor;
       }
 
-      public Trip.TripPing getDefaultInstanceForType() {
-        return Trip.TripPing.getDefaultInstance();
+      public com.creanga.taxidatalake.protobuftrip.Trip.TripPing getDefaultInstanceForType() {
+        return com.creanga.taxidatalake.protobuftrip.Trip.TripPing.getDefaultInstance();
       }
 
-      public Trip.TripPing build() {
-        Trip.TripPing result = buildPartial();
+      public com.creanga.taxidatalake.protobuftrip.Trip.TripPing build() {
+        com.creanga.taxidatalake.protobuftrip.Trip.TripPing result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public Trip.TripPing buildPartial() {
-        Trip.TripPing result = new Trip.TripPing(this);
+      public com.creanga.taxidatalake.protobuftrip.Trip.TripPing buildPartial() {
+        com.creanga.taxidatalake.protobuftrip.Trip.TripPing result = new com.creanga.taxidatalake.protobuftrip.Trip.TripPing(this);
         result.tripId_ = tripId_;
         result.latitude_ = latitude_;
         result.longitude_ = longitude_;
@@ -3638,27 +3158,25 @@ public final class Trip {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof Trip.TripPing) {
-          return mergeFrom((Trip.TripPing)other);
+        if (other instanceof com.creanga.taxidatalake.protobuftrip.Trip.TripPing) {
+          return mergeFrom((com.creanga.taxidatalake.protobuftrip.Trip.TripPing)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(Trip.TripPing other) {
-        if (other == Trip.TripPing.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.creanga.taxidatalake.protobuftrip.Trip.TripPing other) {
+        if (other == com.creanga.taxidatalake.protobuftrip.Trip.TripPing.getDefaultInstance()) return this;
         if (!other.getTripId().isEmpty()) {
           tripId_ = other.tripId_;
           onChanged();
         }
-        if (!other.getLatitude().isEmpty()) {
-          latitude_ = other.latitude_;
-          onChanged();
+        if (other.getLatitude() != 0D) {
+          setLatitude(other.getLatitude());
         }
-        if (!other.getLongitude().isEmpty()) {
-          longitude_ = other.longitude_;
-          onChanged();
+        if (other.getLongitude() != 0D) {
+          setLongitude(other.getLongitude());
         }
         if (other.getTimestamp() != 0L) {
           setTimestamp(other.getTimestamp());
@@ -3675,11 +3193,11 @@ public final class Trip {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        Trip.TripPing parsedMessage = null;
+        com.creanga.taxidatalake.protobuftrip.Trip.TripPing parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (Trip.TripPing) e.getUnfinishedMessage();
+          parsedMessage = (com.creanga.taxidatalake.protobuftrip.Trip.TripPing) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -3758,140 +3276,54 @@ public final class Trip {
         return this;
       }
 
-      private java.lang.Object latitude_ = "";
+      private double latitude_ ;
       /**
-       * <code>optional string latitude = 2;</code>
+       * <code>optional double latitude = 2;</code>
        */
-      public java.lang.String getLatitude() {
-        java.lang.Object ref = latitude_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          latitude_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      public double getLatitude() {
+        return latitude_;
       }
       /**
-       * <code>optional string latitude = 2;</code>
+       * <code>optional double latitude = 2;</code>
        */
-      public com.google.protobuf.ByteString
-          getLatitudeBytes() {
-        java.lang.Object ref = latitude_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          latitude_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string latitude = 2;</code>
-       */
-      public Builder setLatitude(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+      public Builder setLatitude(double value) {
+        
         latitude_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string latitude = 2;</code>
+       * <code>optional double latitude = 2;</code>
        */
       public Builder clearLatitude() {
         
-        latitude_ = getDefaultInstance().getLatitude();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string latitude = 2;</code>
-       */
-      public Builder setLatitudeBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        latitude_ = value;
+        latitude_ = 0D;
         onChanged();
         return this;
       }
 
-      private java.lang.Object longitude_ = "";
+      private double longitude_ ;
       /**
-       * <code>optional string longitude = 3;</code>
+       * <code>optional double longitude = 3;</code>
        */
-      public java.lang.String getLongitude() {
-        java.lang.Object ref = longitude_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          longitude_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      public double getLongitude() {
+        return longitude_;
       }
       /**
-       * <code>optional string longitude = 3;</code>
+       * <code>optional double longitude = 3;</code>
        */
-      public com.google.protobuf.ByteString
-          getLongitudeBytes() {
-        java.lang.Object ref = longitude_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          longitude_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string longitude = 3;</code>
-       */
-      public Builder setLongitude(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+      public Builder setLongitude(double value) {
+        
         longitude_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string longitude = 3;</code>
+       * <code>optional double longitude = 3;</code>
        */
       public Builder clearLongitude() {
         
-        longitude_ = getDefaultInstance().getLongitude();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string longitude = 3;</code>
-       */
-      public Builder setLongitudeBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        longitude_ = value;
+        longitude_ = 0D;
         onChanged();
         return this;
       }
@@ -3932,16 +3364,16 @@ public final class Trip {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:com.creanga.datalake.protobuftrip.TripPing)
+      // @@protoc_insertion_point(builder_scope:com.creanga.taxidatalake.protobuftrip.TripPing)
     }
 
-    // @@protoc_insertion_point(class_scope:com.creanga.datalake.protobuftrip.TripPing)
-    private static final Trip.TripPing DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:com.creanga.taxidatalake.protobuftrip.TripPing)
+    private static final com.creanga.taxidatalake.protobuftrip.Trip.TripPing DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new Trip.TripPing();
+      DEFAULT_INSTANCE = new com.creanga.taxidatalake.protobuftrip.Trip.TripPing();
     }
 
-    public static Trip.TripPing getDefaultInstance() {
+    public static com.creanga.taxidatalake.protobuftrip.Trip.TripPing getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -3964,32 +3396,32 @@ public final class Trip {
       return PARSER;
     }
 
-    public Trip.TripPing getDefaultInstanceForType() {
+    public com.creanga.taxidatalake.protobuftrip.Trip.TripPing getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_creanga_datalake_protobuftrip_TripStart_descriptor;
+    internal_static_com_creanga_taxidatalake_protobuftrip_TripStart_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_creanga_datalake_protobuftrip_TripStart_fieldAccessorTable;
+      internal_static_com_creanga_taxidatalake_protobuftrip_TripStart_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_creanga_datalake_protobuftrip_TripEnd_descriptor;
+    internal_static_com_creanga_taxidatalake_protobuftrip_TripEnd_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_creanga_datalake_protobuftrip_TripEnd_fieldAccessorTable;
+      internal_static_com_creanga_taxidatalake_protobuftrip_TripEnd_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_creanga_datalake_protobuftrip_TripStop_descriptor;
+    internal_static_com_creanga_taxidatalake_protobuftrip_TripStop_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_creanga_datalake_protobuftrip_TripStop_fieldAccessorTable;
+      internal_static_com_creanga_taxidatalake_protobuftrip_TripStop_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_creanga_datalake_protobuftrip_TripPing_descriptor;
+    internal_static_com_creanga_taxidatalake_protobuftrip_TripPing_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_creanga_datalake_protobuftrip_TripPing_fieldAccessorTable;
+      internal_static_com_creanga_taxidatalake_protobuftrip_TripPing_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -3999,22 +3431,22 @@ public final class Trip {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\ntrip.proto\022!com.creanga.datalake.proto" +
-      "buftrip\"\212\002\n\tTripStart\022\017\n\007trip_id\030\001 \001(\t\022\017" +
-      "\n\007user_id\030\002 \001(\t\022\021\n\tdriver_id\030\003 \001(\t\022\020\n\010la" +
-      "titude\030\004 \001(\t\022\021\n\tlongitude\030\005 \001(\t\022\027\n\017order" +
-      "_timestamp\030\006 \001(\003\022\027\n\017start_timestamp\030\007 \001(" +
-      "\003\022N\n\014payment_type\030\010 \001(\01628.com.creanga.da" +
-      "talake.protobuftrip.TripStart.PaymentTyp" +
-      "e\"!\n\013PaymentType\022\010\n\004CASH\020\000\022\010\n\004CARD\020\001\"R\n\007" +
-      "TripEnd\022\017\n\007trip_id\030\001 \001(\t\022\020\n\010latitude\030\002 \001" +
-      "(\t\022\021\n\tlongitude\030\003 \001(\t\022\021\n\ttimestamp\030\004 \001(\003",
-      "\"q\n\010TripStop\022\017\n\007trip_id\030\001 \001(\t\022\020\n\010latitud" +
-      "e\030\002 \001(\t\022\021\n\tlongitude\030\003 \001(\t\022\026\n\016stop_times" +
-      "tamp\030\004 \001(\003\022\027\n\017start_timestamp\030\005 \001(\003\"S\n\010T" +
-      "ripPing\022\017\n\007trip_id\030\001 \001(\t\022\020\n\010latitude\030\002 \001" +
-      "(\t\022\021\n\tlongitude\030\003 \001(\t\022\021\n\ttimestamp\030\004 \001(\003" +
-      "b\006proto3"
+      "\n\ntrip.proto\022%com.creanga.taxidatalake.p" +
+      "rotobuftrip\"\306\002\n\tTripStart\022\017\n\007trip_id\030\001 \001" +
+      "(\t\022\017\n\007user_id\030\002 \001(\t\022\021\n\tdriver_id\030\003 \001(\t\022\026" +
+      "\n\016start_latitude\030\004 \001(\001\022\027\n\017start_longitud" +
+      "e\030\005 \001(\001\022\024\n\014end_latitude\030\006 \001(\001\022\025\n\rend_lon" +
+      "gitude\030\007 \001(\001\022\027\n\017order_timestamp\030\010 \001(\003\022\026\n" +
+      "\016trip_timestamp\030\t \001(\003\022R\n\014payment_type\030\n " +
+      "\001(\0162<.com.creanga.taxidatalake.protobuft" +
+      "rip.TripStart.PaymentType\"!\n\013PaymentType" +
+      "\022\010\n\004CASH\020\000\022\010\n\004CARD\020\001\"-\n\007TripEnd\022\017\n\007trip_",
+      "id\030\001 \001(\t\022\021\n\ttimestamp\030\004 \001(\003\"q\n\010TripStop\022" +
+      "\017\n\007trip_id\030\001 \001(\t\022\020\n\010latitude\030\002 \001(\001\022\021\n\tlo" +
+      "ngitude\030\003 \001(\001\022\026\n\016stop_timestamp\030\004 \001(\003\022\027\n" +
+      "\017start_timestamp\030\005 \001(\003\"S\n\010TripPing\022\017\n\007tr" +
+      "ip_id\030\001 \001(\t\022\020\n\010latitude\030\002 \001(\001\022\021\n\tlongitu" +
+      "de\030\003 \001(\001\022\021\n\ttimestamp\030\004 \001(\003b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -4028,29 +3460,29 @@ public final class Trip {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
-    internal_static_com_creanga_datalake_protobuftrip_TripStart_descriptor =
+    internal_static_com_creanga_taxidatalake_protobuftrip_TripStart_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_com_creanga_datalake_protobuftrip_TripStart_fieldAccessorTable = new
+    internal_static_com_creanga_taxidatalake_protobuftrip_TripStart_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_creanga_datalake_protobuftrip_TripStart_descriptor,
-        new java.lang.String[] { "TripId", "UserId", "DriverId", "Latitude", "Longitude", "OrderTimestamp", "StartTimestamp", "PaymentType", });
-    internal_static_com_creanga_datalake_protobuftrip_TripEnd_descriptor =
+        internal_static_com_creanga_taxidatalake_protobuftrip_TripStart_descriptor,
+        new java.lang.String[] { "TripId", "UserId", "DriverId", "StartLatitude", "StartLongitude", "EndLatitude", "EndLongitude", "OrderTimestamp", "TripTimestamp", "PaymentType", });
+    internal_static_com_creanga_taxidatalake_protobuftrip_TripEnd_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_com_creanga_datalake_protobuftrip_TripEnd_fieldAccessorTable = new
+    internal_static_com_creanga_taxidatalake_protobuftrip_TripEnd_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_creanga_datalake_protobuftrip_TripEnd_descriptor,
-        new java.lang.String[] { "TripId", "Latitude", "Longitude", "Timestamp", });
-    internal_static_com_creanga_datalake_protobuftrip_TripStop_descriptor =
+        internal_static_com_creanga_taxidatalake_protobuftrip_TripEnd_descriptor,
+        new java.lang.String[] { "TripId", "Timestamp", });
+    internal_static_com_creanga_taxidatalake_protobuftrip_TripStop_descriptor =
       getDescriptor().getMessageTypes().get(2);
-    internal_static_com_creanga_datalake_protobuftrip_TripStop_fieldAccessorTable = new
+    internal_static_com_creanga_taxidatalake_protobuftrip_TripStop_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_creanga_datalake_protobuftrip_TripStop_descriptor,
+        internal_static_com_creanga_taxidatalake_protobuftrip_TripStop_descriptor,
         new java.lang.String[] { "TripId", "Latitude", "Longitude", "StopTimestamp", "StartTimestamp", });
-    internal_static_com_creanga_datalake_protobuftrip_TripPing_descriptor =
+    internal_static_com_creanga_taxidatalake_protobuftrip_TripPing_descriptor =
       getDescriptor().getMessageTypes().get(3);
-    internal_static_com_creanga_datalake_protobuftrip_TripPing_fieldAccessorTable = new
+    internal_static_com_creanga_taxidatalake_protobuftrip_TripPing_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_creanga_datalake_protobuftrip_TripPing_descriptor,
+        internal_static_com_creanga_taxidatalake_protobuftrip_TripPing_descriptor,
         new java.lang.String[] { "TripId", "Latitude", "Longitude", "Timestamp", });
   }
 

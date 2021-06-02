@@ -39,6 +39,7 @@
                         </goals>
                         <configuration>
                             <protocVersion>3.1.0</protocVersion>
+                            <optimizeCodegen>false</optimizeCodegen>
                             <inputDirectories>
                                 <include>src/main/protobuf</include>
                             </inputDirectories>
