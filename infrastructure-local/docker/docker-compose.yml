@@ -1,34 +1,121 @@
-version: '3'
-
+version: "3"
 
 services:
+  namenode:
+    image: bde2020/hadoop-namenode:2.0.0-hadoop3.2.1-java8
+    container_name: namenode
+    restart: always
+    ports:
+      - 9870:9870
+      - 9010:9000
+    volumes:
+      - hadoop_namenode:/hadoop/dfs/name:z
+    environment:
+      - CLUSTER_NAME=test
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:9000
+    env_file:
+      - ./hadoop.env
+
+  datanode:
+    image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
+    container_name: datanode
+    restart: always
+    volumes:
+      - hadoop_datanode:/hadoop/dfs/data:z
+    environment:
+      SERVICE_PRECONDITION: "namenode:9870"
+      CORE_CONF_fs_defaultFS: hdfs://namenode:9000
+    ports:
+      - "9864:9864"
+    env_file:
+      - ./hadoop.env
+
+  resourcemanager:
+    image: bde2020/hadoop-resourcemanager:2.0.0-hadoop3.2.1-java8
+    container_name: resourcemanager
+    restart: always
+    environment:
+      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864"
+    env_file:
+      - ./hadoop.env
+
+  nodemanager1:
+    image: bde2020/hadoop-nodemanager:2.0.0-hadoop3.2.1-java8
+    container_name: nodemanager
+    restart: always
+    environment:
+      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088"
+    env_file:
+      - ./hadoop.env
+
+  historyserver:
+    image: bde2020/hadoop-historyserver:2.0.0-hadoop3.2.1-java8
+    container_name: historyserver
+    restart: always
+    environment:
+      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088"
+    volumes:
+      - hadoop_historyserver:/hadoop/yarn/timeline:z
+    env_file:
+      - ./hadoop.env
+
+  hive-server:
+    image: bde2020/hive:2.3.2-postgresql-metastore
+    container_name: hive-server
+    depends_on:
+      - namenode
+      - datanode
+    env_file:
+      - ./hadoop-hive.env
+    environment:
+      HIVE_CORE_CONF_javax_jdo_option_ConnectionURL: "jdbc:postgresql://hive-metastore/metastore"
+      SERVICE_PRECONDITION: "hive-metastore:9083"
+    ports:
+      - "10000:10000"
+
+  hive-metastore:
+    image: bde2020/hive:2.3.2-postgresql-metastore
+    container_name: hive-metastore
+    env_file:
+      - ./hadoop-hive.env
+    command: /opt/hive/bin/hive --service metastore
+    environment:
+      SERVICE_PRECONDITION: "namenode:9870 datanode:9864 hive-metastore-postgresql:5432"
+    ports:
+      - "9083:9083"
+
+  hive-metastore-postgresql:
+    image: bde2020/hive-metastore-postgresql:2.3.0
+    container_name: hive-metastore-postgresql
+
+  presto-coordinator:
+    image: shawnzhu/prestodb:0.181
+    container_name: presto-coordinator
+    ports:
+      - "8089:8089"
 
   neo4j:
     image: 'neo4j:latest'
     hostname: neo4j
     container_name: neo4j
-    networks:
-      - apptier
     ports:
       - "7474:7474"
       - "7687:7687"
-#    depends_on:
-#      - kafka
+    #    depends_on:
+    #      - kafka
     volumes:
-      - ./neo4j/plugins:/plugins
+      - ./neo4j/plugins:/plugins:z
     environment:
       NEO4J_AUTH: neo4j/streams
       NEO4J_dbms_logs_debug_level: DEBUG
       # KAFKA related configuration
-#      NEO4J_kafka_bootstrap_servers: kafka:19092
-#      NEO4J_streams_source_topic_nodes_neo4j: Person{*}
-#      NEO4J_streams_source_topic_relationships_neo4j: KNOWS{*}
+    #      NEO4J_kafka_bootstrap_servers: kafka:19092
+    #      NEO4J_streams_source_topic_nodes_neo4j: Person{*}
+    #      NEO4J_streams_source_topic_relationships_neo4j: KNOWS{*}
 
   zookeeper:
     image: 'bitnami/zookeeper:latest'
     hostname: zookeeper
-    networks:
-      - apptier
     ports:
       - "2181:2181"
     environment:
@@ -39,8 +126,6 @@ services:
     image: 'bitnami/kafka:latest'
     ports:
       - '9093:9093'
-    networks:
-      - apptier
     depends_on:
       - zookeeper
     environment:
@@ -59,19 +144,20 @@ services:
       - ENV=local
       - INSTANCE_ID=1
       - LOCAL_STORAGE=/localfiles
+      - KAFKA_BROKERS=kafka:9092
       - REDIS_HOST=redis:6379
+      - HADOOP_FS=hdfs://namenode:9000
     ports:
       - "8088:8088"
       - "10010:10010"
     expose:
       - "8088"
       - "10010"
-    networks:
-      - apptier
 
     depends_on:
       - kafka
-
-networks:
-  apptier:
+volumes:
+  hadoop_namenode:
+  hadoop_datanode:
+  hadoop_historyserver:
 
