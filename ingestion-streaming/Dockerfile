@@ -16,4 +16,4 @@ ENV DRIVER_PORT=40694
 RUN mkdir /opt/application
 COPY target/ingestion-streaming-1.0-SNAPSHOT-jar-with-dependencies.jar /opt/application/app.jar
 
-CMD /opt/bitnami/spark/bin/spark-submit --class $CLASS --master $MASTER_URL --deploy-mode client /opt/application/app.jar --conf "spark.driver.extraJavaOptions=-Dlog4jspark.root.logger=WARN,console"
+CMD /opt/bitnami/spark/bin/spark-submit --executor-memory 1G --driver-memory 1G --class $CLASS --master $MASTER_URL --deploy-mode client /opt/application/app.jar --conf "spark.driver.extraJavaOptions=-Dlog4jspark.root.logger=WARN,console"
