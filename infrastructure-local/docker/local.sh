@@ -1,11 +1,11 @@
 cd ../../
 mvn clean package
-cd files-api
+cd ingestion-streaming
 docker build -t filesapi .
 cd ../files-worker
-docker build -t filesworker .
+docker build -t streaming .
 
-cd ../files-local-infra/docker
+cd ../infrastructure-local/docker
 
 echo "copying prometheus configuration"
 mkdir -p /var/local/docker/msengg/volumes/prometheus

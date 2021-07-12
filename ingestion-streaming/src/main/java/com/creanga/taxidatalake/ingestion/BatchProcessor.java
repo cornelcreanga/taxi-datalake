@@ -11,7 +11,7 @@ public class BatchProcessor {
   public void processBatchData(Dataset<Row> df, Long batchId) {
     JavaRDD<Row> rdd = df.javaRDD();
 
-    JavaRDD<byte[]> t = rdd.map((Function<Row, byte[]>) v1 -> v1.getAs("value"));
+    JavaRDD<byte[]> t = rdd.map((Function<Row, byte[]>) v1 -> (byte[]) v1.getAs("value"));
   }
 //Function
 }

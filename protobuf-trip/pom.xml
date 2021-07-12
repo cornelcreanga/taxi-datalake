@@ -14,6 +14,7 @@
 
     <properties>
         <protoc-jar-maven-plugin.version>3.11.4</protoc-jar-maven-plugin.version>
+        <protobuf-java.version>3.1.0</protobuf-java.version>
     </properties>
 
     <dependencies>
@@ -21,7 +22,7 @@
         <dependency>
             <groupId>com.google.protobuf</groupId>
             <artifactId>protobuf-java</artifactId>
-            <version>3.1.0</version>
+            <version>${protobuf-java.version}</version>
         </dependency>
     </dependencies>
 
@@ -38,7 +39,7 @@
                             <goal>run</goal>
                         </goals>
                         <configuration>
-                            <protocVersion>3.1.0</protocVersion>
+                            <protocVersion>${protobuf-java.version}</protocVersion>
                             <optimizeCodegen>false</optimizeCodegen>
                             <inputDirectories>
                                 <include>src/main/protobuf</include>

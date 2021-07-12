@@ -1,6 +1,24 @@
 version: "3"
 
 services:
+
+  prometheus:
+    container_name: prometheus
+    image: prom/prometheus
+    ports:
+      - 9090:9090
+    volumes:
+      - msengg_prometheus:/prometheus
+      - /var/local/docker/msengg/volumes/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:z
+
+  grafana:
+    container_name: grafana
+    image: grafana/grafana
+    ports:
+      - 3000:3000
+    depends_on:
+      - prometheus
+
   namenode:
     image: bde2020/hadoop-namenode:2.0.0-hadoop3.2.1-java8
     container_name: namenode
@@ -142,11 +160,9 @@ services:
       - REDIS_HOST=redis:6379
       - HADOOP_FS=hdfs://namenode:9000
     ports:
-      - "8088:8088"
-      - "10010:10010"
+      - "4040:4040"
     expose:
-      - "8088"
-      - "10010"
+      - "4040"
 
     depends_on:
       - kafka

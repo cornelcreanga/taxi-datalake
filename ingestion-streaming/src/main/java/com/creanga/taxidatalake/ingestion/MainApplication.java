@@ -2,6 +2,7 @@ package com.creanga.taxidatalake.ingestion;
 
 import com.creanga.taxidatalake.ingestion.conf.Configuration;
 import com.typesafe.config.ConfigFactory;
+import org.apache.log4j.Level;
 import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.api.java.function.VoidFunction2;
 import org.apache.spark.sql.Dataset;
@@ -35,6 +36,11 @@ public class MainApplication {
         .getOrCreate();
 
     JavaSparkContext sc = new JavaSparkContext(sparkSession.sparkContext());
+//    sc.setLogLevel("INFO");
+//    org.apache.log4j.Logger.getLogger("org.apache.kafka.clients.consumer").setLevel(Level.OFF);
+//    org.apache.log4j.Logger.getLogger("org.apache.spark.scheduler").setLevel(Level.OFF);
+//    org.apache.log4j.Logger.getLogger("org.apache.spark").setLevel(Level.OFF);
+//    org.apache.log4j.Logger.getLogger("org.apache.spark.sql").setLevel(Level.WARN);
 
     Dataset<Row> df = sparkSession.readStream().format("kafka")
         .option("kafka.bootstrap.servers", conf.getBrokers())
