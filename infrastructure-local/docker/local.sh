@@ -40,14 +40,14 @@ fi
 
 cd ../../
 mvn clean package
-cd ingestion-streaming
+cd ingestion-streaming || exit
 docker build -t streaming .
 
-cd ../infrastructure-local/docker
+cd ../infrastructure-local/docker || exit
 
 echo "copying prometheus configuration"
-mkdir -p /var/local/docker/msengg/volumes/prometheus
-cp prometheus/prometheus.yml /var/local/docker/msengg/volumes/prometheus/.
-chmod -R 777 /var/local/docker/msengg/volumes/prometheus/
+sudo mkdir -p /var/local/docker/msengg/volumes/prometheus
+sudo cp prometheus/prometheus.yml /var/local/docker/msengg/volumes/prometheus/.
+sudo chmod -R 777 /var/local/docker/msengg/volumes/prometheus/
 
 docker-compose up
