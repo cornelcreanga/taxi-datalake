@@ -8,7 +8,7 @@ services:
     ports:
       - 9090:9090
     volumes:
-      - msengg_prometheus:/prometheus
+      - prometheus:/prometheus
       - /var/local/docker/msengg/volumes/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:z
 
   grafana:
@@ -126,7 +126,7 @@ services:
     #      NEO4J_streams_source_topic_relationships_neo4j: KNOWS{*}
 
   zookeeper:
-    image: 'bitnami/zookeeper:latest'
+    image: 'bitnami/zookeeper:3.5.9'
     hostname: zookeeper
     ports:
       - "2181:2181"
@@ -135,7 +135,7 @@ services:
 
   kafka:
     hostname: kafka
-    image: 'bitnami/kafka:latest'
+    image: 'bitnami/kafka:2.8.1'
     ports:
       - '9093:9093'
     depends_on:
@@ -170,4 +170,5 @@ volumes:
   hadoop_namenode:
   hadoop_datanode:
   hadoop_historyserver:
+  prometheus:
 

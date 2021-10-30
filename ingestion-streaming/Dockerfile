@@ -1,4 +1,4 @@
-FROM bitnami/spark:3.1.2
+FROM bitnami/spark:3.2.0
 
 USER 0
 RUN apt update && apt install -y openjdk-11-jre-headless && rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
