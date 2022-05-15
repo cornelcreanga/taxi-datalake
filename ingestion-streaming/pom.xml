@@ -19,7 +19,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.creanga.datalake</groupId>
+            <groupId>com.creanga.taxidatalake</groupId>
             <artifactId>protobuf-trip</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
